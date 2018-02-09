@@ -73,19 +73,19 @@ void Board::printBoard()
 	{
     		for(int j = 0; j < boardCols; j++)
     		{
-        			if (i == 0 || i == boardCols - 1) 
-        			{
-           				 board[i][j] = '-';
-           			}
+			if (i == 0 || i == boardCols - 1) 
+			{
+				 board[i][j] = '-';
+			}
 	       		 else if(j == 0 || j == boardCols -1) 
 		    	{
 		        		board[i][j] = '|';
 	       		}
-	        		else 
-	        		{
-	            		board[i][j];  
-	        		}
-        			std::cout << board[i][j];
+			else 
+			{
+			board[i][j];  
+			}
+			std::cout << board[i][j];
     		}
     		std::cout << std::endl;
 	}
