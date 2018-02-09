@@ -1,7 +1,12 @@
 Menu
 #include <iostream>
-#include *****inputval file that is chosen*******
-#include *****class files**********
+#include "inputValidation.h"
+#include "Critter.h"
+#include "Ant.h"
+#include "DoodleBug.h"
+#include "Board.h"
+#include "PromptUser.h"
+
 Int main ()
 {
   Int choice = 0;
