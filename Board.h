@@ -1,6 +1,7 @@
 Board Header File:
 #ifndef BOARD_HPP
 #define BOARD_HPP
+"Critter.h"
 
 Class Board
 {
