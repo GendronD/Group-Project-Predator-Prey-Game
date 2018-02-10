@@ -10,7 +10,8 @@ Class Board
 		int cols = 0;
 		const int boardRows = 20;
 		const int boardCols = 20;
-char **board;	
+		//char **board;	// needs to be a critter
+		Critter **board;
 	Public:
     Board();  //default
     Board(int, int);  //overloard
