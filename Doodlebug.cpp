@@ -1,12 +1,13 @@
 #include "Doodlebug.hpp"
 #include <stdlib.h>
 
-Doodlebug::Doodlebug(int row, int col)
+Doodlebug::Doodlebug(int row, int col, int alive, int starve)
 {
 	xPos = row;
 	yPos = col;
-	daysAlive = 0;
-	daysStarving = 0;
+	symbol = 'X';
+	daysAlive = alive;
+	daysStarving = starve;
 }
 
 void Doodlebug::move(char **board, int rows, int columns)
