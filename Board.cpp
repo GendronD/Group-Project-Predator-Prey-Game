@@ -1,3 +1,5 @@
+#include "Board.hpp"
+
 //default constructor
 Board::Board()
 {
