@@ -3,6 +3,12 @@
 Critter::Critter()
 {
 	daysAlive = 0;
+	symbol = ' ';
 }
 
-//Note.. this file is not really necessary as a critter will never be made as a critter
+char Critter::getSymbol()
+{
+	return symbol;
+}
+
+
