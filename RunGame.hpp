@@ -1,5 +1,5 @@
-#ifndef RUNGAME_H
-#define RUNGAME_H
+#ifndef RUNGAME_HPP
+#define RUNGAME_HPP
 
 Class RunGame
 {
