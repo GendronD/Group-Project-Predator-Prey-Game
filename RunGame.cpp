@@ -1,3 +1,5 @@
+#include "RunGame.hpp"
+
 // default constructor
 RunGame::RunGame()
 {
