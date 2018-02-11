@@ -1,11 +1,12 @@
 #include "Ant.hpp"
 #include <stdlib.h>
 
-Ant::Ant(int row, int col)
+Ant::Ant(int row, int col, int alive)
 {
 	xPos = row;
 	yPos = col;
-	daysAlive = 0;
+	symbol = 'O'
+	daysAlive = alive;
 }
 
 void Ant::move(char **board, int rows, int columns)
@@ -14,11 +15,11 @@ void Ant::move(char **board, int rows, int columns)
 	
 	switch (move)
 	{
-		case 1://If space is emtpy and not wall, Move North
+		case 1://If space is empty and not wall, Move North
 		if (board[xPos][yPos -1] =="" && yPos-1 >= 0)
 		{
 			board[xPos][yPos - 1] = "O";
-			board[xPos][yPos] = "";
+			board[xPos][yPos] = Critter();
 			yPos -= 1;
 		}
 		break;
@@ -79,7 +80,7 @@ void Ant::breed(char **board, int rows, int columns)
 					{	
 						case 1:
 						//if empty and not wall, breed north
-						if (board[xPos][yPos-1] == "" &&
+						if (board[xPos][yPos-1].getSymbol() == ' ' &&
 							yPos-1 >= 0)
 						{
 							board[xPos][yPos-1] = "O";
