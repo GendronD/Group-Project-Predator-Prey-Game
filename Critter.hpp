@@ -7,9 +7,11 @@ class Critter
 		int daysAlive;
 		int xPos;
 		int yPos;
+		char Symbol;
 	private:
 		virtual void move(char**, int, int)= 0;
 		virtual void breed(char**, int, int)= 0;
+		virtual void getSymbol();
 };
 
 #endif
