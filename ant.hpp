@@ -5,9 +5,9 @@
 class Ant: public Critter
 {
 	public:
-		Ant(int, int);
-		virtual void move(char**, int, int);
-		virtual void breed(char**, int, int);
+		Ant(int, int, int);
+		virtual void move(Critter**, int, int);
+		virtual void breed(Critter**, int, int);
 };
 
 #endif
