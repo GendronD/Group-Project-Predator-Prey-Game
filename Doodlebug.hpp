@@ -7,7 +7,7 @@ class Doodlebug: public Critter
 	private:
 		int daysStarving;
 	public:
-		Doodlebug(int, int, int);
+		Doodlebug(int, int, int, int);
 		virtual void move(Critter**, int, int);
 		virtual void breed(Critter**, int, int);
 		void starve(Critter**);
