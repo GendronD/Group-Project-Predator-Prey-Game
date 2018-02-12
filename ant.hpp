@@ -1,6 +1,6 @@
 #ifndef ANT_HPP
 #define ANT_HPP
-#include "Critter.hpp"
+#include "critter.hpp"
 
 class Ant: public Critter
 {
