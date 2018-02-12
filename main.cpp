@@ -1,11 +1,11 @@
 Menu
 #include <iostream>
-#include "inputValidation.h"
-#include "Critter.h"
-#include "Ant.h"
-#include "DoodleBug.h"
-#include "Board.h"
-#include "PromptUser.h"
+#include "inputValidation.hpp"
+#include "Critter.hpp"
+#include "Ant.hpp"
+#include "DoodleBug.hpp"
+#include "Board.hpp"
+#include "PromptUser.hpp"
 
 Int main ()
 {
@@ -21,14 +21,14 @@ Int main ()
     {
       Case 1 : //set game
         Default constructor for game
-        Prompt user for number of steps
+        promptSteps();
         break;
       Case 2 : //custom game
-        Prompt user for number of rows
-        Prompt user for number of columns
-        Prompt user for number of ants (controlled by rows/cols)
-        Prompt user for number of doodlebugs (controlled by rows/cols)
-        Prompt user for number of steps
+        promptRows();        //Prompt user for number of rows
+        promptCols();        //Prompt user for number of columns
+        promptAnts();        //Prompt user for number of ants (controlled by rows/cols)
+        promptDoodles();     //Prompt user for number of doodlebugs (controlled by rows/cols)
+        promptSteps();
         Break;
     }
   //start game sim here
