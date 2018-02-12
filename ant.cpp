@@ -1,3 +1,4 @@
+
 #include "Ant.hpp"
 #include "Critter.hpp"
 #include <stdlib.h>
@@ -105,7 +106,7 @@ void Ant::breed(Critter ***board, int rows, int columns)
 	//check if ant has lived long enough
 	if (daysAlive >= 3)
 	{
-		do
+		while (count < 4)	
 		{
 			//Use array to grab random direction
 			cout << "grabbing random number\n";
@@ -116,9 +117,11 @@ void Ant::breed(Critter ***board, int rows, int columns)
 			{
 				cout << "Checking array\n";
 				cout << ary[spot];
-				switch (1)
+				spot += 1;
+				switch (spot)
 				{	
 					case 1:
+					cout << "running case 1\n";
 					//if empty and not wall, breed north
 					if (yPos-1 >= 0)
 					{
@@ -155,7 +158,7 @@ void Ant::breed(Critter ***board, int rows, int columns)
 					//and search again
 					else
 					{
-						ary[1]= 2;
+						ary[1]= 0;
 						count++;
 					}
 					break;
@@ -204,7 +207,6 @@ void Ant::breed(Critter ***board, int rows, int columns)
 				}
 			}
 		}
-		while (count < 4);
 	}
 
 }
