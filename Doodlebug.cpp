@@ -11,7 +11,7 @@ Doodlebug::Doodlebug(int row, int col, int alive, int starve)
 	daysStarving = starve;
 }
 
-void Doodlebug::move(char **board, int rows, int columns)
+void Doodlebug::move(Critter **board, int rows, int columns)
 {
 	//Check if there is an ant next to bug, if so eat it
 	if (board[xPos][yPos-1].getSymbol() == "O" ||board[xPos][yPos+1].getSymbol() == "O" ||
@@ -100,7 +100,7 @@ void Doodlebug::move(char **board, int rows, int columns)
 	}
 }
 
-void Doodlebug::breed(char **board, int rows, int columns)
+void Doodlebug::breed(Critter **board, int rows, int columns)
 {
 	int ary[4] = {1, 2, 3, 4};
 	int count = 0;
@@ -204,7 +204,7 @@ void Doodlebug::breed(char **board, int rows, int columns)
 	}
 }
 
-void Doodlebug::starve(char **board)
+void Doodlebug::starve(Critter **board)
 {
 	if (daysStarving == 3)
 	{
