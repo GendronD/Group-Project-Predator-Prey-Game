@@ -21,6 +21,7 @@ int main ()
 {   
     srand(time(NULL));  //random seed
     int choice = 0;
+    int endGame = 1;
     cout << "Extra credit is implemented on this project" << endl;
 
     cout << "Predator Prey Menu" << endl;
@@ -49,7 +50,8 @@ switch (choice)
     do
     {
         //runs simulation
-        game.predatorPrey();	
+        game.predatorPrey();
+        endGame = 1;
     }
     while (endGame != 1);
     
