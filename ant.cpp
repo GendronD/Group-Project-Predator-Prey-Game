@@ -9,7 +9,7 @@ Ant::Ant(int row, int col, int alive)
 	daysAlive = alive;
 }
 
-void Ant::move(char **board, int rows, int columns)
+void Ant::move(Critter **board, int rows, int columns)
 {
 	int move = rand() % 4 + 1;
 	
@@ -65,7 +65,7 @@ void Ant::move(char **board, int rows, int columns)
 	}
 }
 
-void Ant::breed(char **board, int rows, int columns)
+void Ant::breed(Critter **board, int rows, int columns)
 {
 	int ary[4] = {1, 2, 3, 4};
 	int count = 0;
