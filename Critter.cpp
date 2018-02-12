@@ -11,4 +11,12 @@ char Critter::getSymbol()
 	return symbol;
 }
 
+void Critter::move(Critter*** board, int row, int col)
+{
+	symbol = ' ';
+}
 
+void Critter::breed(Critter*** board, int row, int col)
+{
+	symbol = ' ';
+}
