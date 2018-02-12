@@ -1,4 +1,4 @@
-#include "Ant.hpp"
+#include "ant.hpp"
 #include <stdlib.h>
 
 Ant::Ant(int row, int col, int alive)
