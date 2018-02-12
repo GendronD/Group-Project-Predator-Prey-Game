@@ -1,4 +1,3 @@
-
 #include "Ant.hpp"
 #include "Critter.hpp"
 #include <stdlib.h>
@@ -109,19 +108,20 @@ void Ant::breed(Critter ***board, int rows, int columns)
 		while (count < 4)	
 		{
 			//Use array to grab random direction
-			cout << "grabbing random number\n";
+		//	cout << "grabbing random number\n";
 			spot = rand() %4;
-			cout << spot << endl;
+		//	cout << spot << endl;
 			//Check if that direction has already been checked
 			if (ary[spot] != 0)
 			{
-				cout << "Checking array\n";
-				cout << ary[spot];
-				spot += 1;
-				switch (spot)
+			//	cout << "Checking array\n";
+			//	cout << ary[spot];
+				int test = ary[spot];
+				switch (test)
 				{	
 					case 1:
-					cout << "running case 1\n";
+					{
+				//	cout << "running case 1\n";
 					//if empty and not wall, breed north
 					if (yPos-1 >= 0)
 					{
@@ -130,6 +130,11 @@ void Ant::breed(Critter ***board, int rows, int columns)
 							board[xPos][yPos-1] = new Ant(xPos, yPos-1, 0);
 							count = 4;
 							daysAlive = 0;	
+						}
+						else
+						{
+							ary[0] = 0;
+							count++;
 						}
 					}
 					
@@ -141,8 +146,10 @@ void Ant::breed(Critter ***board, int rows, int columns)
 						count++;
 					}
 					break;
-					
+					}
 					case 2:	
+					{
+				//	cout << "running case 2\n";
 					//if empty and not wall, breed East
 					if (xPos+1 < columns)
 					{
@@ -151,6 +158,11 @@ void Ant::breed(Critter ***board, int rows, int columns)
 							board[xPos+1][yPos] = new Ant(xPos+1, yPos, 0);
 							count = 4;
 							daysAlive = 0;
+						}
+						else
+						{
+							ary[1] = 0;
+							count++;
 						}
 					}
 
@@ -162,8 +174,10 @@ void Ant::breed(Critter ***board, int rows, int columns)
 						count++;
 					}
 					break;
-
+					}
 					case 3:
+					{
+				//	cout << "running case 3\n";
 					//if empty and not wall, breed South
 					if (yPos+1 < rows)
 					{
@@ -172,6 +186,11 @@ void Ant::breed(Critter ***board, int rows, int columns)
 							board[xPos][yPos+1] = new Ant(xPos, yPos+1, 0);
 							count = 4;
 							daysAlive = 0;
+						}
+						else
+						{
+							ary[2] = 0;
+							count++;
 						}
 					}
 
@@ -183,8 +202,11 @@ void Ant::breed(Critter ***board, int rows, int columns)
 						count++;
 					}
 					break;
+					}
 
 					case 4:
+					{
+				//	cout << "running case 4\n";
 					//if empty and not wall, breed West
 					if (xPos-1 >= 0)
 					{
@@ -193,6 +215,11 @@ void Ant::breed(Critter ***board, int rows, int columns)
 							board[xPos-1][yPos] = new Ant(xPos-1, yPos, 0);
 							count = 4;
 							daysAlive = 0;
+						}
+						else
+						{
+							ary[3] = 0;
+							count++;
 						}
 					}
 
@@ -204,9 +231,11 @@ void Ant::breed(Critter ***board, int rows, int columns)
 						count++;
 					}
 					break;	
+					}
 				}
 			}
 		}
 	}
 
 }
+
