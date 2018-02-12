@@ -1,5 +1,6 @@
 #include "Doodlebug.hpp"
 #include <stdlib.h>
+using namespace std;
 
 Doodlebug::Doodlebug(int row, int col, int alive, int starve)
 {
@@ -13,39 +14,31 @@ Doodlebug::Doodlebug(int row, int col, int alive, int starve)
 void Doodlebug::move(char **board, int rows, int columns)
 {
 	//Check if there is an ant next to bug, if so eat it
-	if (board[xPos][yPos-1] == "O" ||board[xPos][yPos+1] == "O" ||
-		board[xPos-1][yPos] == "O" ||board[xPos+1][yPos] == "O")
+	if (board[xPos][yPos-1].getSymbol() == "O" ||board[xPos][yPos+1].getSymbol() == "O" ||
+		board[xPos-1][yPos].getSymbol() == "O" ||board[xPos+1][yPos].getSymbol() == "O")
 	{
-		if (board[xPos][yPos-1] == "O")
+		if (board[xPos][yPos-1].getSymbol() == "O")
 		{
-			board[xPos][yPos-1] = "X";
-			board[xPos][yPos-1] = "";
-			yPos -= 1;
-			daysStarving = 0;
+			board[xPos][yPos-1] = Doodlebug(xPos, yPos-1, ++daysAlive, 0);
+			board[xPos][yPos] = Critter(xPos, yPos);
 		}
 		
-		if (board[xPos][yPos+1] == "O")
+		if (board[xPos][yPos+1].getSymbol() == "O")
 		{
-			board[xPos][yPos+1] = "X";
-			board[xPos][yPos-1] = "";+
-			yPos += 1;
-			daysStarving = 0;
+			board[xPos][yPos+1] = Doodlebug(xPos, yPos+1, ++daysAlive, 0);
+			board[xPos][yPos] = Critter(xPos, yPos);
 		}
 		
-		if (board[xPos-1][yPos] == "O")
+		if (board[xPos-1][yPos].getSymbol() == "O")
 		{
-			board[xPos-1][yPos] = "X";
-			board[xPos-1][yPos] = "";
-			xPos -= 1;
-			daysStarving = 0;
+			board[xPos-1][yPos] = Doodlebug(xPos-1, yPos, ++daysAlive, 0);
+			board[xPos][yPos] = Critter(xPos, yPos);
 		}
 		
-		if (board[xPos+1][yPos] == "O")
+		if (board[xPos+1][yPos].getSymbol() == "O")
 		{
-			board[xPos+1][yPos] = "X";
-			board[xPos+1][yPos] = "";
-			yPos += 1;
-			daysStarving = 0;
+			board[xPos+1][yPos] = Doodlebug(xPos+1, yPos, ++daysAlive, 0);
+			board[xPos][yPos] = Critter(xPos, yPos);
 		}
 	}
 	
@@ -57,45 +50,38 @@ void Doodlebug::move(char **board, int rows, int columns)
 		switch (move)
 		{
 			case 1://Move North
-			if (board[xPos][yPos -1] =="" && yPos-1 >= 0)
+			if (board[xPos][yPos -1].getSymbol() == ' ' && yPos-1 >= 0)
 			{
-				board[xPos][yPos - 1] = "X";
-				board[xPos][yPos] = "";
-				yPos -= 1;
+				board[xPos][yPos - 1] = Doodlebug(xPos, yPos-1, ++daysAlive, ++daysStarving);
+				board[xPos][yPos] = Critter(xPos, yPos);
 			}
 			break;
 	
 			case 2://Move West	
-			if (board[xPos-1][yPos] =="" && xPos-1 >= 0)
+			if (board[xPos-1][yPos].getSymbol() ==' ' && xPos-1 >= 0)
 			{
-				board[xPos-1][yPos] = "X";
-				board[xPos][yPos] = "";
-				xPos -= 1;
+				board[xPos-1][yPos] = Doodlebug(xPos-1, yPos, ++daysAlive, ++daysStarving);
+				board[xPos][yPos] = Critter(xPos, yPos);
 			}
 			break;
 
 			case 3://Move South	
-			if (board[xPos][yPos +1] =="" && yPos+1 < rows)
+			if (board[xPos][yPos +1].getSymbol() ==' ' && yPos+1 < rows)
 			{
-				board[xPos][yPos + 1] = "X";
-				board[xPos][yPos] = "";
-				yPos += 1;
+				board[xPos][yPos + 1] = Doodlebug(xPos, yPos+1, ++daysAlive, ++daysStarving);
+				board[xPos][yPos] = Critter(xPos, yPos);
 			}
 			break;
 
 			case 4://Move East	
-			if (board[xPos+1][yPos] =="" && xPos+1 < columns)
+			if (board[xPos+1][yPos].getSymbol() ==' ' && xPos+1 < columns)
 			{
-				board[xPos+1][yPos] = "X";
-				board[xPos][yPos]="";
-				yPos += 1;
+				board[xPos+1][yPos] = Doodlebug(xPos+1, yPos, ++daysAlive, ++daysStarving);
+				board[xPos][yPos] = Critter(xPos, yPos);
 			}
 			break;
 		}
-	//add a starving day if bug didn't eat
-	daysStarving++
 	}
-	daysAlive++;
 }
 
 void Doodlebug::breed(char **board, int rows, int columns)
@@ -105,12 +91,12 @@ void Doodlebug::breed(char **board, int rows, int columns)
 	int spot;
 
 	//check if ant has lived long enough
-	if (daysAlive >= 3)
+	if (daysAlive >= 8)
 	{
 
 		//Make sure there is an empty space adjacent
-		if (board[xPos][yPos-1] =="" || board[xPos][yPos+1] == "" ||
-			board[xPos-1][yPos] == "" || board[xPos+1][yPos] == "")
+		if (board[xPos][yPos-1].getSymbol() ==' ' || board[xPos][yPos+1].getSymbol() == ' ' ||
+			board[xPos-1][yPos].getSymbol() ==' ' || board[xPos+1][yPos].getSymbol() == ' ')
 		{
 			do
 			{
@@ -123,11 +109,10 @@ void Doodlebug::breed(char **board, int rows, int columns)
 					{	
 						case 1:
 						//if empty and not wall, breed north
-						if (board[xPos][yPos-1] == "" &&
+						if (board[xPos][yPos-1].getSymbol() == ' ' &&
 							yPos-1 >= 0)
 						{
-							board[xPos][yPos-1] = "X";
-							Doodlebug(xPos, yPos-1);
+							board[xPos][yPos-1] = Doodlebug(xPos, yPos-1, 0, 0);
 							count = 4;
 							break;
 						}
@@ -142,11 +127,10 @@ void Doodlebug::breed(char **board, int rows, int columns)
 						}
 						case 2:	
 						//if empty and not wall, breed East
-						if (board[xPos+1][yPos] == "" &&
+						if (board[xPos+1][yPos].getSymbol() == ' ' &&
 							xPos+1 < columns)
 						{
-							board[xPos+1][yPos] = "X";
-							Doodlebug(xPos+1, yPos);
+							board[xPos+1][yPos] = Doodlebug(xPos+1, yPos, 0, 0);
 							count = 4;
 							break;
 						}
@@ -162,11 +146,10 @@ void Doodlebug::breed(char **board, int rows, int columns)
 						
 						case 3:
 						//if empty and not wall, breed South
-						if (board[xPos][yPos+1] == "" &&
+						if (board[xPos][yPos+1].getSymbol() == ' ' &&
 							yPos+1 < rows)
 						{
-							board[xPos][yPos+1] = "X";
-							Doodlebug(xPos, yPos+1);
+							board[xPos][yPos+1] = Doodlebug(xPos, yPos+1, 0, 0);
 							count = 4;
 							break;
 						}
@@ -182,11 +165,10 @@ void Doodlebug::breed(char **board, int rows, int columns)
 
 						case 4:
 						//if empty and not wall, breed West
-						if (board[xPos-1][yPos] == "" &&
+						if (board[xPos-1][yPos].getSymbol() == ' ' &&
 							xPos-1 >= 0)
 						{
-							board[xPos-1][yPos] = "X";
-							Doodlebug(xPos-1, yPos);
+							board[xPos-1][yPos] = Doodlebug(xPos-1, yPos, 0, 0);
 							count = 4;
 							break;
 						}
@@ -208,9 +190,9 @@ void Doodlebug::breed(char **board, int rows, int columns)
 
 void Doodlebug::starve(char **board)
 {
-	if (daysStarving == 8)
+	if (daysStarving == 3)
 	{
-		board[xPos][yPos] = ""
+		board[xPos][yPos] = Critter(xPos, yPos);
 	}
 }
 
