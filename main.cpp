@@ -18,7 +18,8 @@ using std::cout;
 using std::endl;
 
 int main ()
-{
+{   
+    srand(time(NULL));  //random seed
     int choice = 0;
     cout << "Extra credit is implemented on this project" << endl;
 
