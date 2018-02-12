@@ -7,10 +7,10 @@ class Doodlebug: public Critter
 	private:
 		int daysStarving;
 	public:
-		Doodlebug(int, int);
-		virtual void move(char**, int, int);
-		virtual void breed(char**, int, int);
-		void starve(char**);
+		Doodlebug(int, int, int);
+		virtual void move(Critter**, int, int);
+		virtual void breed(Critter**, int, int);
+		void starve(Critter**);
 };
 
 #endif
