@@ -28,7 +28,7 @@ Int main ()
         promptCols();        //Prompt user for number of columns
         promptAnts();        //Prompt user for number of ants (controlled by rows/cols)
         promptDoodles();     //Prompt user for number of doodlebugs (controlled by rows/cols)
-        promptSteps();
+        promptSteps();       //Prompt user for number of steps
         Break;
     }
   //start game sim here
