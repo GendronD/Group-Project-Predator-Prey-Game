@@ -55,6 +55,10 @@ void Doodlebug::move(char **board, int rows, int columns)
 				board[xPos][yPos - 1] = Doodlebug(xPos, yPos-1, ++daysAlive, ++daysStarving);
 				board[xPos][yPos] = Critter(xPos, yPos);
 			}
+			else
+			{
+				daysAlive++;
+			}
 			break;
 	
 			case 2://Move West	
@@ -62,6 +66,10 @@ void Doodlebug::move(char **board, int rows, int columns)
 			{
 				board[xPos-1][yPos] = Doodlebug(xPos-1, yPos, ++daysAlive, ++daysStarving);
 				board[xPos][yPos] = Critter(xPos, yPos);
+			}
+			else
+			{
+				daysAlive++;
 			}
 			break;
 
@@ -71,6 +79,10 @@ void Doodlebug::move(char **board, int rows, int columns)
 				board[xPos][yPos + 1] = Doodlebug(xPos, yPos+1, ++daysAlive, ++daysStarving);
 				board[xPos][yPos] = Critter(xPos, yPos);
 			}
+			else
+			{
+				daysAlive++;
+			}
 			break;
 
 			case 4://Move East	
@@ -78,6 +90,10 @@ void Doodlebug::move(char **board, int rows, int columns)
 			{
 				board[xPos+1][yPos] = Doodlebug(xPos+1, yPos, ++daysAlive, ++daysStarving);
 				board[xPos][yPos] = Critter(xPos, yPos);
+			}
+			else
+			{
+				daysAlive++;
 			}
 			break;
 		}
