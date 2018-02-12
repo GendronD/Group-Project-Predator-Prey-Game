@@ -1,15 +1,13 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
-Class RunGame
+class Game
 {
-	Private:
-
-char **board;	
+	private:
+	   char **board;	
 	Public:
-    RunGame();
-    ~RunGame();
-
+	   Game();
+	   ~Game();
 };
 
 #endif
