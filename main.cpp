@@ -1,5 +1,11 @@
-//Menu
-#include <iostream>
+/*********************************************************************
+ * Program name: Group Project 1 - Group 8 - main.cpp
+ * Authors: Sheila Babayan, Becky Chao, Elizabeth Donato, 
+ * Devin Gendron, Ronald Walters
+ * Date: 2/19/2018
+ * Description: This is the Main function for Group 8's group project.
+ **********************************************************************/
+
 #include "inputValidation.hpp"
 #include "Critter.hpp"
 #include "Ant.hpp"
@@ -7,35 +13,44 @@
 #include "Board.hpp"
 #include "PromptUser.hpp"
 
-Int main ()
+#include <iostream>
+using std::cout;
+using std::endl;
+
+int main ()
 {
-  Int choice = 0;
-  Std::cout << “Extra credit is implemented on this project” << std::endl;
+    int choice = 0;
+    cout << "Extra credit is implemented on this project" << endl;
 
-  Std::cout << “Predator Prey Menu” << std::endl;
-  Std::cout << “1. Play Set Game” << std::endl;
-  Std::cout << “2. Play Custom Game (EC)” << std::endl;
-  Choice = inputValidation();
+    cout << "Predator Prey Menu" << endl;
+    cout << "1. Play Set Game" << endl;
+    cout << "2. Play Custom Game (EC)" << endl;
+  
+    choice = inputValidation();
 
-    Switch (choice)
-    {
-      Case 1 : //set game
-        Default constructor for game
-        promptSteps();
-        break;
-      Case 2 : //custom game
-        promptRows();        //Prompt user for number of rows
-        promptCols();        //Prompt user for number of columns
-        promptAnts();        //Prompt user for number of ants (controlled by rows/cols)
-        promptDoodles();     //Prompt user for number of doodlebugs (controlled by rows/cols)
-        promptSteps();       //Prompt user for number of steps
-        Break;
+switch (choice)
+{
+      case 1:   //default/normal game
+                //Default constructor for game
+                promptSteps();
+                break;
+      case 2:   //custom game
+                promptRows();        //Prompt user for number of rows
+                promptCols();        //Prompt user for number of columns
+                promptAnts();        //Prompt user for number of ants (controlled by rows/cols)
+                promptDoodles();     //Prompt user for number of doodlebugs (controlled by rows/cols)
+                promptSteps();       //Prompt user for number of steps
+                break;
+      default:  cout << "That's not a menu option, something went wrong." << endl;
     }
-  //start game sim here
-    Do
+  
+    //start game sim here
+    do
     {
-      game.predatorPrey();	//runs simulation
-    }while (endGame != 1);
+        //runs simulation
+        game.predatorPrey();	
+    }
+    while (endGame != 1);
     
     return 0;
 }
