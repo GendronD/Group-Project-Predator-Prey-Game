@@ -18,32 +18,48 @@ void Ant::move(char **board, int rows, int columns)
 		case 1://If space is empty and not wall, Move North
 		if (board[xPos][yPos -1].getSymbol() ==' ' && yPos-1 >= 0)
 		{
-			Ant(xPos,yPos - 1, daysAlive++);
-			Critter(xPos, yPos);
+			board[xPos][yPos -1] = Ant(xPos,yPos - 1, ++daysAlive);
+			board[xPos][yPos] = Critter(xPos, yPos);
+		}
+		else
+		{
+			daysAlive++;
 		}
 		break;
 	
 		case 2://If space is empty and not wall, Move West	
-		if (board[xPos-1][yPos].getSymbol ==' ' && xPos-1 >= 0)
+		if (board[xPos-1][yPos].getSymbol() ==' ' && xPos-1 >= 0)
 		{
-			Ant(xPos-1,yPos, daysAlive++);
-			Critter(xPos,yPos);
+			board[xPos-1][yPos] = Ant(xPos-1,yPos, daysAlive++);
+			board[xPos][yPos] = Critter(xPos, yPos);
+		}
+		else
+		{
+			daysAlive++;
 		}
 		break;
 
 		case 3://If space is empty and not wall, Move South	
-		if (board[xPos][yPos +1].getSymbol ==' ' && yPos+1 < rows)
+		if (board[xPos][yPos +1].getSymbol() ==' ' && yPos+1 < rows)
 		{
-			Ant(xPos,yPos + 1, daysAlive++);
-			Critter(xPos, yPos);
+			board[xPos][yPos +1] = Ant(xPos,yPos + 1, daysAlive++);
+			board[xPos][yPos] = Critter(xPos, yPos);
+		}
+		else
+		{
+			daysAlive++;
 		}
 		break;
 
 		case 4://if space is empty and not wall, Move East	
 		if (board[xPos+1][yPos].getSymbol() ==' ' && xPos+1 < columns)
 		{
-			Ant(xPos+1, yPos, daysAlive++);
-			Critter(xPos, yPos);
+			board[xPos+1][yPos] = Ant(xPos+1, yPos, daysAlive++);
+			board[xPos][yPos] = Critter(xPos, yPos);
+		}
+		else
+		{
+			daysAlive++;
 		}
 		break;
 	}
@@ -77,7 +93,7 @@ void Ant::breed(char **board, int rows, int columns)
 						if (board[xPos][yPos-1].getSymbol() == ' ' &&
 							yPos-1 >= 0)
 						{
-							Ant(xPos, yPos-1, 0);
+							board[xPos, yPos-1] = Ant(xPos, yPos-1, 0);
 							count = 4;
 							daysAlive = 0;
 							break;
@@ -97,9 +113,9 @@ void Ant::breed(char **board, int rows, int columns)
 						if (board[xPos+1][yPos].getSymbol() == ' ' &&
 							xPos+1 < columns)
 						{
-							Ant(xPos+1, yPos, 0);
+							board[xPos+1][yPos] = Ant(xPos+1, yPos, 0);
 							count = 4;
-							daysALive = 0;
+							daysAlive = 0;
 							break;
 						}
 
@@ -117,7 +133,7 @@ void Ant::breed(char **board, int rows, int columns)
 						if (board[xPos][yPos+1].getSymbol == ' ' &&
 							yPos+1 < rows)
 						{
-							Ant(xPos, yPos+1, 0);
+							board[xPos][yPos+1]Ant(xPos, yPos+1, 0);
 							count = 4;
 							daysAlive = 0;
 							break;
@@ -137,7 +153,7 @@ void Ant::breed(char **board, int rows, int columns)
 						if (board[xPos-1][yPos].getSymbol() == ' ' &&
 							xPos-1 >= 0)
 						{
-							Ant(xPos-1, yPos, 0);
+							board[xPos-1][yPos] = Ant(xPos-1, yPos, 0);
 							count = 4;
 							daysAlive = 0;
 							break;
