@@ -57,6 +57,7 @@ void Board::createBoard()
 			}
 		}
 	}
+	
 	for (int i = 0; i < boardCols; i++)
 	{
 		board[boardRows - 1][i] = '-';	//bottom row
@@ -81,11 +82,11 @@ void Board::printBoard()
 			}
 	       		 else if(j == 0 || j == boardCols -1) 
 		    	{
-		        		board[i][j] = '|';
+		        	board[i][j] = '|';
 	       		}
 			else 
 			{
-			board[i][j];  
+				board[i][j];  
 			}
 			std::cout << board[i][j];
     		}
