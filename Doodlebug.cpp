@@ -49,35 +49,18 @@ void Doodlebug::move(Critter **board, int rows, int columns)
 	
 		switch (move)
 		{
-			case 1://Move North
-			if (board[xPos][yPos -1].getSymbol() == ' ' && yPos-1 >= 0)
+			case 1://If space is empty and not wall, Move North
+			if (yPos-1 >=0)
 			{
-				board[xPos][yPos - 1] = Doodlebug(xPos, yPos-1, ++daysAlive, ++daysStarving);
-				board[xPos][yPos] = Critter(xPos, yPos);
-			}
-			else
-			{
-				daysAlive++;
-			}
-			break;
-	
-			case 2://Move West	
-			if (board[xPos-1][yPos].getSymbol() ==' ' && xPos-1 >= 0)
-			{
-				board[xPos-1][yPos] = Doodlebug(xPos-1, yPos, ++daysAlive, ++daysStarving);
-				board[xPos][yPos] = Critter(xPos, yPos);
-			}
-			else
-			{
-				daysAlive++;
-			}
-			break;
-
-			case 3://Move South	
-			if (board[xPos][yPos +1].getSymbol() ==' ' && yPos+1 < rows)
-			{
-				board[xPos][yPos + 1] = Doodlebug(xPos, yPos+1, ++daysAlive, ++daysStarving);
-				board[xPos][yPos] = Critter(xPos, yPos);
+				if(board[xPos][yPos -1]->getSymbol() ==' ')
+				{
+					board[xPos][yPos -1] = new Doodlebug(xPos,yPos - 1, ++daysAlive);
+					board[xPos][yPos] = new Critter();
+				}	
+				else
+				{
+					daysAlive++;
+				}
 			}
 			else
 			{
@@ -85,11 +68,56 @@ void Doodlebug::move(Critter **board, int rows, int columns)
 			}
 			break;
 
-			case 4://Move East	
-			if (board[xPos+1][yPos].getSymbol() ==' ' && xPos+1 < columns)
+			case 2://If space is empty and not wall, Move West	
+			if (xPos-1 >= 0)
 			{
-				board[xPos+1][yPos] = Doodlebug(xPos+1, yPos, ++daysAlive, ++daysStarving);
-				board[xPos][yPos] = Critter(xPos, yPos);
+				if (board[xPos-1][yPos]->getSymbol() ==' ')
+				{
+					board[xPos-1][yPos] = new Doodlebug(xPos-1,yPos, ++daysAlive);
+					board[xPos][yPos] = new Critter();
+				}
+				else
+				{
+					daysAlive++;
+				}
+			}
+			else
+			{
+				daysAlive++;
+			}
+			break;
+
+			case 3://If space is empty and not wall, Move South	
+			if (yPos+1 < rows)
+			{
+				if (board[xPos][yPos +1]->getSymbol() ==' ')
+				{	
+					board[xPos][yPos +1] = new Doodlebug(xPos,yPos + 1, ++daysAlive);
+					board[xPos][yPos] = new Critter();
+				}
+				else
+				{
+					daysAlive++;
+				}
+			}
+			else
+			{
+				daysAlive++;
+			}
+			break;
+
+			case 4://if space is empty and not wall, Move East	
+			if (xPos+1 < columns)
+			{
+				if(board[xPos+1][yPos]->getSymbol() ==' ')
+				{
+					board[xPos+1][yPos] = new Doodlebug(xPos+1, yPos, ++daysAlive);
+					board[xPos][yPos] = new Critter();
+				}
+				else
+				{
+					daysAlive++;
+				}
 			}
 			else
 			{
@@ -100,108 +128,147 @@ void Doodlebug::move(Critter **board, int rows, int columns)
 	}
 }
 
-void Doodlebug::breed(Critter **board, int rows, int columns)
+void Doodlebug::breed(Critter ***board, int rows, int columns)
 {
-	int ary[4] = {1, 2, 3, 4};
+	char ary[4] = {1, 2, 3, 4};
 	int count = 0;
 	int spot;
 
-	//check if ant has lived long enough
+	//check if doodlebug has lived long enough
 	if (daysAlive >= 8)
 	{
-
-		//Make sure there is an empty space adjacent
-		if (board[xPos][yPos-1].getSymbol() ==' ' || board[xPos][yPos+1].getSymbol() == ' ' ||
-			board[xPos-1][yPos].getSymbol() ==' ' || board[xPos+1][yPos].getSymbol() == ' ')
+		while (count < 4)	
 		{
-			do
+			//Use array to grab random direction
+		//	cout << "grabbing random number\n";
+			spot = rand() %4;
+		//	cout << spot << endl;
+			//Check if that direction has already been checked
+			if (ary[spot] != 0)
 			{
-				//Use array to grab random direction
-				spot = rand() %4;
-				//Check if that direction has already been checked
-				if (ary[spot] != 0)
-				{
-					switch (ary[spot])
-					{	
-						case 1:
-						//if empty and not wall, breed north
-						if (board[xPos][yPos-1].getSymbol() == ' ' &&
-							yPos-1 >= 0)
+			//	cout << "Checking array\n";
+			//	cout << ary[spot];
+				int test = ary[spot];
+				switch (test)
+				{	
+					case 1:
+					{
+				//	cout << "running case 1\n";
+					//if empty and not wall, breed north
+					if (yPos-1 >= 0)
+					{
+						if (board[xPos][yPos-1]->getSymbol() == ' ')
 						{
-							board[xPos][yPos-1] = Doodlebug(xPos, yPos-1, 0, 0);
+							board[xPos][yPos-1] = new Doodlebug(xPos, yPos-1, 0);
 							count = 4;
-							break;
+							daysAlive = 0;	
 						}
-						
-						//Otherwise mark direction checked
-						//and search again
 						else
 						{
-							ary[0]= 0;
+							ary[0] = 0;
 							count++;
-							break;
 						}
-						case 2:	
-						//if empty and not wall, breed East
-						if (board[xPos+1][yPos].getSymbol() == ' ' &&
-							xPos+1 < columns)
+					}
+					
+					//Otherwise mark direction checked
+					//and search again
+					else
+					{
+						ary[0]= 0;
+						count++;
+					}
+					break;
+					}
+					case 2:	
+					{
+				//	cout << "running case 2\n";
+					//if empty and not wall, breed East
+					if (xPos+1 < columns)
+					{
+						if (board[xPos+1][yPos]->getSymbol() == ' ')
 						{
-							board[xPos+1][yPos] = Doodlebug(xPos+1, yPos, 0, 0);
+							board[xPos+1][yPos] = new Doodlebug(xPos+1, yPos, 0);
 							count = 4;
-							break;
+							daysAlive = 0;
 						}
+						else
+						{
+							ary[1] = 0;
+							count++;
+						}
+					}
 
-						//Otherwise mark direction checked
-						//and search again
-						else
+					//Otherwise mark direction checked
+					//and search again
+					else
+					{
+						ary[1]= 0;
+						count++;
+					}
+					break;
+					}
+					case 3:
+					{
+				//	cout << "running case 3\n";
+					//if empty and not wall, breed South
+					if (yPos+1 < rows)
+					{
+						if(board[xPos][yPos+1]->getSymbol() == ' ')
 						{
-							ary[1]= 0;
-							count++;
-							break;
-						}
-						
-						case 3:
-						//if empty and not wall, breed South
-						if (board[xPos][yPos+1].getSymbol() == ' ' &&
-							yPos+1 < rows)
-						{
-							board[xPos][yPos+1] = Doodlebug(xPos, yPos+1, 0, 0);
+							board[xPos][yPos+1] = new Doodlebug(xPos, yPos+1, 0);
 							count = 4;
-							break;
+							daysAlive = 0;
 						}
-
-						//Otherwise mark direction checked
-						//and search again
 						else
 						{
-							ary[2]= 0;
+							ary[2] = 0;
 							count++;
-							break;
 						}
+					}
 
-						case 4:
-						//if empty and not wall, breed West
-						if (board[xPos-1][yPos].getSymbol() == ' ' &&
-							xPos-1 >= 0)
+					//Otherwise mark direction checked
+					//and search again
+					else
+					{
+						ary[2]= 0;
+						count++;
+					}
+					break;
+					}
+
+					case 4:
+					{
+				//	cout << "running case 4\n";
+					//if empty and not wall, breed West
+					if (xPos-1 >= 0)
+					{
+						if (board[xPos-1][yPos]->getSymbol() == ' ')
 						{
-							board[xPos-1][yPos] = Doodlebug(xPos-1, yPos, 0, 0);
+							board[xPos-1][yPos] = new Doodlebug(xPos-1, yPos, 0);
 							count = 4;
-							break;
+							daysAlive = 0;
 						}
-						//Otherwise mark direction checked
-						//and search again
 						else
 						{
-							ary[3]= 0;
+							ary[3] = 0;
 							count++;
-							break;
 						}
+					}
+
+					//Otherwise mark direction checked
+					//and search again
+					else
+					{
+						ary[3]= 0;
+						count++;
+					}
+					break;	
 					}
 				}
 			}
-			while (count <= 3);
 		}
 	}
+
 }
 
 void Doodlebug::starve(Critter **board)
