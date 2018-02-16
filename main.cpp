@@ -63,6 +63,7 @@ int main ()
                     main();
     }
     
+    cout << "Initial gameboard. Doodlebugs, start your engines." << endl;
     gameboard->printBoard();
 
     /*
