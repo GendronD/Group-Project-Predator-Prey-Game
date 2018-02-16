@@ -19,6 +19,8 @@
 #include <map>
 #include <iomanip>
 
+int inputValidation();
+
 int promptRows();        //Prompt user for number of rows
 int promptCols();        //Prompt user for number of columns
 int promptAnts();        //Prompt user for number of ants (controlled by rows/cols)

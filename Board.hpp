@@ -1,31 +1,32 @@
-//Board Header File:
+/*********************************************************************
+ * Program name: Group Project 1 - Group 8 - Board.hpp
+ * Authors: Sheila Babayan, Becky Chao, Elizabeth Donato, 
+ * Devin Gendron, Ronald Walters
+ * Date: 2/19/2018
+ * Description: This is the header file for our Board class. It contains 
+ * the information and methods for our Board object.
+ **********************************************************************/
 #ifndef BOARD_HPP
 #define BOARD_HPP
 #include "Critter.hpp"
 #include "Ant.hpp"
 #include "Doodlebug.hpp"
 #include <stdlib.h>
+#include <iostream>
+using std::cout;
 
 class Board
 {
 	private:
-		//(if we want extra credit, use these)
-		int rows;
-		int cols;	
-		//char **board;	// needs to be a critter
+		int rows, cols;
+		int ants, dbugs;
 		Critter ***board;
 	public:
 		Board();  //default
-		Board(int, int);  //overloard
+		Board(int, int, int, int);  //overloard
 		~Board();  //destructor
-		void createBoard();
 		void printBoard();
-		//(extra credit)
-		void setRows(int r);	//could use my inputval function for these -DG
-		void setColumns(int c);
-
-		//gonna need this at some point?
-	//	int getRandom(int min, int max);
+		
 };
 
 #endif

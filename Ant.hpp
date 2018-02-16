@@ -1,24 +1,24 @@
 /*********************************************************************
- * Program name: Group Project 1 - Group 8 - Doodlebug.hpp
+ * Program name: Group Project 1 - Group 8 - Ant.hpp
  * Authors: Sheila Babayan, Becky Chao, Elizabeth Donato, 
  * Devin Gendron, Ronald Walters
  * Date: 2/19/2018
- * Description: This is the header file for our Doodlebug child class. 
- * It contains the information and methods for Doodlebug objects.
+ * Description: This is the header file for our Ant child class. It contains 
+ * the information and methods for Ant objects.
  **********************************************************************/
-#ifndef DOODLEBUG_HPP
-#define DOODLEBUG_HPP
+#ifndef ANT_HPP
+#define ANT_HPP
 #include "Critter.hpp"
 
-class Doodlebug: public Critter
+
+class Ant: public Critter
 {
-	private:
-		int daysStarving;
 	public:
-		Doodlebug(int, int, int, int);
+		Ant(int, int, int);
 		void move(Critter***, int, int);
 		void breed(Critter***, int, int);
-		void starve(Critter***);
+		
+		~Ant();
 };
 
 #endif

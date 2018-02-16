@@ -1,7 +1,12 @@
-
+/*********************************************************************
+ * Program name: Group Project 1 - Group 8 - Board.cpp
+ * Authors: Sheila Babayan, Becky Chao, Elizabeth Donato, 
+ * Devin Gendron, Ronald Walters
+ * Date: 2/19/2018
+ * Description: This is the implementation file for our Board class. It 
+ * contains the functions for our Board object.
+ **********************************************************************/
 #include "Board.hpp"
-#include <iostream>
-using namespace std;
 
 //default constructor
 Board::Board()
@@ -27,7 +32,7 @@ Board::Board()
 	}
 	
 	//Place ants randomly on board
-	for (int z = 0; z < 5; z++)
+	for (int z = 0; z < 100; z++)
 	{
 		int randRowA = rand() % rows;
 		int randColA = rand() % cols;
@@ -44,9 +49,43 @@ Board::Board()
 }
 
 //overloaded for custom rows/columns
-Board::Board(int r, int c) : rows(r), cols(c)
+Board::Board(int r, int c, int a, int d)
 {
-  
+    rows = r;
+    cols = c;
+    ants = a;
+    dbugs = d;
+    
+    board = new Critter**[rows];
+	for (int x = 0; x < rows; x++)
+	{
+		board[x] = new Critter*[cols];
+	}
+
+	//Fill board with Critter objects
+	for (int rw = 0; rw < rows; rw++)
+	{
+		for (int cl = 0; cl < cols; cl++)
+		{
+			board[rw][cl] = new Critter();
+		}
+	}
+	
+	//Place ants randomly on board
+	for (int z = 0; z < ants; z++)
+	{
+		int randRowA = rand() % rows;
+		int randColA = rand() % cols;
+		board[randRowA][randColA] = new Ant(randRowA, randColA, 0);
+	}
+	
+	//Place doodlebugs randomly on board
+	for (int dbs = 0; dbs < dbugs; dbs++)
+	{
+		int randRowD = rand() % rows;
+		int randColD = rand() % cols;
+		board[randRowD][randColD] = new Doodlebug(randRowD, randColD, 0, 0);
+	}
 }
 
 //destructor
@@ -65,58 +104,12 @@ Board::~Board()
 	board = NULL;
 }
 
-//setrows
-void Board::setRows(int r)
-{
-	rows = r;
-}
-
-//setcols
-void Board::setColumns(int c)
-{
-	cols = c;
-}
-
-//create board function... I don't think this is needed.<--RON
-void Board::createBoard()
-{
-/*	//creates board
-	for (int i = 0; i < boardCols; i++)
-	{
-		board[0][i] = '-';	//top row
-	}
-
-	for (int i = 0; i < boardRows; i++)
-	{
-		for (int j = 0; j < boardCols; j++)
-		{
-			if(j == 0)
-			{
-				board[i][j] = '|';	//left wall
-			}
-			else
-			{
-				board[i][j] = ' ';
-			}
-			if(j == boardCols - 1)
-			{
-				board[i][j] = '|';		//right side wall
-			}
-		}
-	}
-	
-	for (int i = 0; i < boardCols; i++)
-	{
-		board[boardRows - 1][i] = '-';	//bottom row
-	}*/
-}
-
 //print board function
 void Board::printBoard()
 {
 	//system("clear");	//this creates a better flipbook effect for me
 
-	std::cout << "\033[2J\033[1;1H";	//this does a poor job (at least on my mac) 
+	//std::cout << "\033[2J\033[1;1H";	//this does a poor job (at least on my mac) 
 
 	//prints board
 	for (int r = 0; r < rows+2; r++)

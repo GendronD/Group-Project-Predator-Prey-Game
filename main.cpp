@@ -9,62 +9,69 @@
 using std::cout;
 using std::endl;
 
-#include "game.hpp"
+#include "Board.hpp"
 #include "promptUser.hpp"
-//#include "critter.hpp"
-//#include "ant.hpp"
-//#include "doodleBug.hpp"
-//#include "board.hpp"
+#include "Critter.hpp"
+#include "Ant.hpp"
+#include "Doodlebug.hpp"
+
+#include <time.h>
+#include <stdlib.h>
 
 int main ()
 {
-    srand(time(NULL));  //random seed
+    //random seed
+    srand(time(NULL));  
     
     int choice = 0;
     int endGame = 1;
-    cout << "Extra credit is implemented on this project" << endl;
+    Board *gameboard;
+    int steps = 0;
+
+    //extra credit message
+    cout << "Extra credit is implemented on this project\n" << endl;
     
-    //create a Game object
-    Game g1;
-    
-    //call the Game's starting menu options
-    g1.startMenu();
+    //display starting menu options
+    cout << "Predator Prey Menu" << endl;
+    cout << "   1. Play Set Game" << endl;
+    cout << "   2. Play Custom Game (EC)" << endl;
+    cout << "Please choose an option: " << endl;
     
     //validate the user's selection
-    choice = g1.inputValidation();
+    choice = inputValidation();
 
     switch (choice)
     {
-        case 1:     //Default constructor for gameboard
-                    //set the gameboard's #rows, cols
-                    //Prompt user for number of steps
-                    promptSteps();
+        case 1:     {//make a default gameboard;
+                    gameboard = new Board;
+                    steps = promptSteps();
+                    }
                     break;
-        case 2:     promptRows();        //Prompt user for number of rows
-                    promptCols();        //Prompt user for number of columns
-                    promptAnts();        //Prompt user for number of ants (controlled by rows/cols)
-                    promptDoodles();     //Prompt user for number of doodlebugs (controlled by rows/cols)
-                    promptSteps();       //Prompt user for number of steps
+                    
+        case 2:     {//make a custom gameboard
+                    int rows = promptRows();        //Prompt user for number of rows
+                    int cols = promptCols();        //Prompt user for number of columns
+                    int ants = promptAnts();        //Prompt user for number of ants (controlled by rows/cols)
+                    int dbugs = promptDoodles();     //Prompt user for number of doodlebugs (controlled by rows/cols)
+                    steps = promptSteps();       //Prompt user for number of steps
                     //constructor with parameters for gameboard
+                    gameboard = new Board(rows, cols, ants, dbugs);
+                    }
                     break;
         default:    cout << "That's not a menu option. Please try again!\n" << endl;
                     //start over by recursively calling main
                     main();
     }
     
-    
-    //this is for testing, we can delete it later. Not sure how endGame works below.
-    if ((choice == 1) || (choice == 2))
-    {
-        g1.simulation();
-    }
+
+
     /*
     //start game sim here
     do
     {
         //runs simulation
-        game.predatorPrey();
-        endGame = 1;
+
+
     }
     while (endGame != 1);
     */
