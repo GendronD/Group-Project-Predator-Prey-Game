@@ -63,16 +63,12 @@ int main ()
                     main();
     }
     
-
+    gameboard->printBoard();
 
     /*
     //start game sim here
     do
-    {
-        //runs simulation
-
-
-    }
+    {}
     while (endGame != 1);
     */
     
