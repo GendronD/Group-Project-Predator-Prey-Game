@@ -17,15 +17,17 @@ using std::cout;
 
 class Board
 {
-	private:
-		int rows, cols;
-		int ants, dbugs;
-		Critter ***board;
-	public:
-		Board();  //default
-		Board(int, int, int, int);  //overloard
-		~Board();  //destructor
-		void printBoard();
+private:
+    int rows = 0;
+    int cols = 0;
+    int ants, dbugs;
+    Critter ***board;
+public:
+    Board();  //default
+    Board(int, int, int, int);  //overloard
+    ~Board();  //destructor
+    void printBoard();
+    void simulation(int);
 		
 };
 
