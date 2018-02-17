@@ -15,17 +15,18 @@
 
 class Critter
 {
-	protected:
-		int daysAlive;
-		int xPos;
-		int yPos;
-		char symbol;
-	public:
-		Critter();
-		virtual void move(Critter***, int, int);
-		virtual void breed(Critter***, int, int);
-		virtual char getSymbol();
-		~Critter();
+protected:
+    int daysAlive;
+    int xPos;
+    int yPos;
+    char symbol;
+public:
+    Critter();
+    virtual void move(Critter***, int, int);
+    virtual void breed(Critter***, int, int);
+    virtual void starve(Critter***);
+    virtual char getSymbol();
+    ~Critter();
 };
 
 #endif
