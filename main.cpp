@@ -21,8 +21,8 @@ using std::endl;
 int main ()
 {
     //random seed
-    srand(time(NULL));  
-    
+    srand(time(NULL));
+
     int choice = 0;
     int endGame = 1;
     Board *gameboard;
@@ -30,44 +30,46 @@ int main ()
 
     //extra credit message
     cout << "Extra credit is implemented on this project\n" << endl;
-    
+
     //display starting menu options
     cout << "Predator Prey Menu" << endl;
     cout << "   1. Play Set Game" << endl;
     cout << "   2. Play Custom Game (EC)" << endl;
     cout << "Please choose an option: " << endl;
-    
+
     //validate the user's selection
     choice = inputValidation();
 
     switch (choice)
     {
         case 1:     {//make a default gameboard;
-                    gameboard = new Board;
-                    steps = promptSteps();
-                    }
-                    break;
-                    
+            gameboard = new Board;
+            steps = promptSteps();
+        }
+            break;
+
         case 2:     {//make a custom gameboard
-                    int rows = promptRows();        //Prompt user for number of rows
-                    int cols = promptCols();        //Prompt user for number of columns
-                    int ants = promptAnts();        //Prompt user for number of ants (controlled by rows/cols)
-                    int dbugs = promptDoodles();     //Prompt user for number of doodlebugs (controlled by rows/cols)
-                    steps = promptSteps();       //Prompt user for number of steps
-                    //constructor with parameters for gameboard
-                    gameboard = new Board(rows, cols, ants, dbugs);
-                    }
-                    break;
+            int rows = promptRows();        //Prompt user for number of rows
+            int cols = promptCols();        //Prompt user for number of columns
+            int ants = promptAnts();        //Prompt user for number of ants (controlled by rows/cols)
+            int dbugs = promptDoodles();     //Prompt user for number of doodlebugs (controlled by rows/cols)
+            steps = promptSteps();       //Prompt user for number of steps
+            //constructor with parameters for gameboard
+            gameboard = new Board(rows, cols, ants, dbugs);
+        }
+            break;
         default:    cout << "That's not a menu option. Please try again!\n" << endl;
-                    //start over by recursively calling main
-                    main();
+            //start over by recursively calling main
+            main();
     }
-    
+
     cout << "Initial gameboard. Doodlebugs, start your engines." << endl;
     gameboard->printBoard();
 
     //runs simulation
     gameboard->simulation(steps);
+
+    std::cout<< "game ended!" << std::endl;
 
     return 0;
 }
