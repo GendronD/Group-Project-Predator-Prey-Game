@@ -7,6 +7,7 @@
  * contains the functions for our Board object.
  **********************************************************************/
 #include "Board.hpp"
+#include "promptUser.h"
 
 //default constructor
 Board::Board()
@@ -134,16 +135,17 @@ void Board::printBoard()
     cout << "\n";
 }
 
-
 void Board::simulation(int s)
 {
     int steps = s;
     int end = 0;
+    int menu = 0;
     //start game sim here
     do
     {
         for (int i = 0; i < steps; i++)
         {
+            std::cout << "Test Doodelbugs" << std::endl;
             //loop through for doodlebugs
             for (int rw = 0; rw < rows; rw++)
             {
@@ -157,6 +159,7 @@ void Board::simulation(int s)
                     }
                 }
             }
+            std::cout << "Test ants" << std::endl;
             //loop through for ants
             for (int rw = 0; rw < rows; rw++)
             {
@@ -171,7 +174,21 @@ void Board::simulation(int s)
             }
             printBoard();
         }
-    end = 1;
+        std::cout << "Would you like to add more steps?" << std::endl;
+        std::cout << "1. Yes" << std::endl;
+        std::cout << "2. No, quit game." << std::endl;
+        menu = inputValidation();
+
+        switch(menu)
+        {
+            case 1 : //add more steps
+                steps = promptSteps();
+                end = 0;
+                break;
+            case 2 : //quit game
+                end = 1;
+                break;
+        }
 
     } while (end == 0);
 }
