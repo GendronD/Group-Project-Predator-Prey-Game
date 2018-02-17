@@ -1,6 +1,6 @@
 
-output: main.o Board.o Critter.o Doodlebug.o RunGame.o ant.o game.o promptUser.o
-	g++ -std=c++0x main.o Board.o Critter.o Doodlebug.o RunGame.o ant.o game.o promptUser.o -o output
+output: main.o Board.o Critter.o Doodlebug.o Ant.o promptUser.o
+	g++ -std=c++0x main.o Board.o Critter.o Doodlebug.o Ant.o promptUser.o -o output
 
 main.o: main.cpp
 	g++ -std=c++0x -c main.cpp
@@ -14,14 +14,8 @@ Critter.o: Critter.cpp Critter.hpp
 Doodlebug.o: Doodlebug.cpp Doodlebug.hpp
 	g++ -std=c++0x -c Doodlebug.cpp
 
-RunGame.o: RunGame.cpp RunGame.hpp
-	g++ -std=c++0x -c RunGame.cpp
-
-ant.o: ant.cpp ant.hpp
-	g++ -std=c++0x -c ant.cpp	
-
-game.o: game.cpp game.hpp
-	g++ -std=c++0x -c game.cpp
+Ant.o: Ant.cpp Ant.hpp
+	g++ -std=c++0x -c Ant.cpp	
 
 promptUser.o: promptUser.cpp promptUser.hpp
 	g++ -std=c++0x -c promptUser.cpp
