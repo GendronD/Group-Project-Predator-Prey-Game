@@ -29,5 +29,10 @@ void Critter::breed(Critter*** board, int row, int col)
 	symbol = ' ';
 }
 
+void Critter::starve(Critter***)
+{
+
+}
+
 Critter::~Critter()
 {}
