@@ -66,12 +66,8 @@ int main ()
     cout << "Initial gameboard. Doodlebugs, start your engines." << endl;
     gameboard->printBoard();
 
-    /*
-    //start game sim here
-    do
-    {}
-    while (endGame != 1);
-    */
-    
+    //runs simulation
+    gameboard->simulation(steps);
+
     return 0;
 }
