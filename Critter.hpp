@@ -26,7 +26,7 @@ public:
     virtual void breed(Critter***, int, int);
     virtual void starve(Critter***);
     virtual char getSymbol();
-    ~Critter();
+    virtual ~Critter();
 };
 
 #endif
