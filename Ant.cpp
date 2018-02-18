@@ -32,12 +32,12 @@ void Ant::move(Critter ***board, int rows, int columns)
 	
 	switch (move)
 	{
-		case 1://If space is empty and not wall, Move North
-		if (yPos-1 >=0)
+		case 1:		//If space is empty and not wall, Move North
+		if (xPos-1 >=0)
 		{
-			if(board[xPos][yPos -1]->getSymbol() ==' ')
+			if(board[xPos-1][yPos]->getSymbol() ==' ')
 			{
-				board[xPos][yPos -1] = new Ant(xPos,yPos - 1, ++daysAlive);
+				board[xPos-1][yPos] = new Ant(xPos-1, yPos, ++daysAlive);
 				board[xPos][yPos] = new Critter();
 			}	
 			else
@@ -51,12 +51,12 @@ void Ant::move(Critter ***board, int rows, int columns)
 		}
 		break;
 	
-		case 2://If space is empty and not wall, Move West	
-		if (xPos-1 >= 0)
+		case 2:		//If space is empty and not wall, Move West	
+		if (yPos-1 >= 0)
 		{
-			if (board[xPos-1][yPos]->getSymbol() ==' ')
+			if (board[xPos][yPos-1]->getSymbol() ==' ')
 			{
-				board[xPos-1][yPos] = new Ant(xPos-1,yPos, ++daysAlive);
+				board[xPos][yPos-1] = new Ant(xPos, yPos-1, ++daysAlive);
 				board[xPos][yPos] = new Critter();
 			}
 			else
@@ -70,12 +70,12 @@ void Ant::move(Critter ***board, int rows, int columns)
 		}
 		break;
 
-		case 3://If space is empty and not wall, Move South	
-		if (yPos+1 < rows)
+		case 3:		//If space is empty and not wall, Move South	
+		if (xPos+1 < rows)
 		{
-			if (board[xPos][yPos +1]->getSymbol() ==' ')
+			if (board[xPos+1][yPos]->getSymbol() ==' ')
 			{	
-				board[xPos][yPos +1] = new Ant(xPos,yPos + 1, ++daysAlive);
+				board[xPos+1][yPos] = new Ant(xPos+1,yPos, ++daysAlive);
 				board[xPos][yPos] = new Critter();
 			}
 			else
@@ -89,12 +89,12 @@ void Ant::move(Critter ***board, int rows, int columns)
 		}
 		break;
 
-		case 4://if space is empty and not wall, Move East	
-		if (xPos+1 < columns)
+		case 4:		//if space is empty and not wall, Move East	
+		if (yPos+1 < columns)
 		{
-			if(board[xPos+1][yPos]->getSymbol() ==' ')
+			if(board[xPos][yPos+1]->getSymbol() ==' ')
 			{
-				board[xPos+1][yPos] = new Ant(xPos+1, yPos, ++daysAlive);
+				board[xPos][yPos+1] = new Ant(xPos, yPos+1, ++daysAlive);
 				board[xPos][yPos] = new Critter();
 			}
 			else
@@ -138,11 +138,11 @@ void Ant::breed(Critter ***board, int rows, int columns)
 					case 1:
 					{
 					//if empty and not wall, breed north
-					if (yPos-1 >= 0)
+					if (xPos-1 >= 0)
 					{
-						if (board[xPos][yPos-1]->getSymbol() == ' ')
+						if (board[xPos-1][yPos]->getSymbol() == ' ')
 						{
-							board[xPos][yPos-1] = new Ant(xPos, yPos-1, 0);
+							board[xPos-1][yPos] = new Ant(xPos-1, yPos, 0);
 							count = 4;
 							daysAlive = 0;	
 						}
@@ -165,11 +165,11 @@ void Ant::breed(Critter ***board, int rows, int columns)
 					case 2:	
 					{
 					//if empty and not wall, breed East
-					if (xPos+1 < columns)
+					if (yPos+1 < columns)
 					{
-						if (board[xPos+1][yPos]->getSymbol() == ' ')
+						if (board[xPos][yPos+1]->getSymbol() == ' ')
 						{
-							board[xPos+1][yPos] = new Ant(xPos+1, yPos, 0);
+							board[xPos][yPos+1] = new Ant(xPos, yPos+1, 0);
 							count = 4;
 							daysAlive = 0;
 						}
@@ -192,11 +192,11 @@ void Ant::breed(Critter ***board, int rows, int columns)
 					case 3:
 					{
 					//if empty and not wall, breed South
-					if (yPos+1 < rows)
+					if (xPos+1 < rows)
 					{
-						if(board[xPos][yPos+1]->getSymbol() == ' ')
+						if(board[xPos+1][yPos]->getSymbol() == ' ')
 						{
-							board[xPos][yPos+1] = new Ant(xPos, yPos+1, 0);
+							board[xPos+1][yPos] = new Ant(xPos+1, yPos, 0);
 							count = 4;
 							daysAlive = 0;
 						}
@@ -220,11 +220,11 @@ void Ant::breed(Critter ***board, int rows, int columns)
 					case 4:
 					{
 					//if empty and not wall, breed West
-					if (xPos-1 >= 0)
+					if (yPos-1 >= 0)
 					{
-						if (board[xPos-1][yPos]->getSymbol() == ' ')
+						if (board[xPos][yPos-1]->getSymbol() == ' ')
 						{
-							board[xPos-1][yPos] = new Ant(xPos-1, yPos, 0);
+							board[xPos][yPos-1] = new Ant(xPos, yPos-1, 0);
 							count = 4;
 							daysAlive = 0;
 						}
