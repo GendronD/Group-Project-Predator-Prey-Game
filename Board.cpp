@@ -49,7 +49,7 @@ Board::Board()
     }
 }
 
-//overloaded for custom rows/columns
+//overloaded constructor for custom rows/columns
 Board::Board(int r, int c, int a, int d)
 {
     rows = r;
@@ -105,12 +105,15 @@ Board::~Board()
     board = NULL;
 }
 
-//print board function
+
+/*********************************************************************
+function printBoard()
+- cycles through the board elements and prints the correct character 
+for each space on the board
+**********************************************************************/
 void Board::printBoard()
 {
-    //system("clear");	//this creates a better flipbook effect for me
-
-    //std::cout << "\033[2J\033[1;1H";	//this does a poor job (at least on my mac)
+    //system("clear");	//this creates a better flipbook effect
 
     //prints board
     for (int r = 0; r < rows+2; r++)
@@ -135,6 +138,13 @@ void Board::printBoard()
     cout << "\n";
 }
 
+/*********************************************************************
+function simulation()
+- accepts an integer parameter for the number of steps in the game
+- loops through doodlebugs: for each doodle found, move, breed, 
+and starve
+- loops through ants: for each ant found, move, breed
+**********************************************************************/
 void Board::simulation(int s)
 {
     int steps = s;
@@ -172,6 +182,7 @@ void Board::simulation(int s)
                     }
                 }
             }
+            //display the updated board
             printBoard();
         }
         std::cout << "Would you like to add more steps?" << std::endl;
