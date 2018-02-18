@@ -9,6 +9,7 @@
 #include "Ant.hpp"
 #include "Critter.hpp"
 
+//constructor for ant objects, with params for row, column, and alive status
 Ant::Ant(int row, int col, int alive)
 {
 	xPos = row;
@@ -17,6 +18,14 @@ Ant::Ant(int row, int col, int alive)
 	daysAlive = alive;
 }
 
+
+/*********************************************************************
+function move()
+- generates a random number to start moving the ant in 1 of 4 directions
+- takes the board and the numbers of rows and columns as parameters
+- checks if ant can move
+- increments the # days the ant has been alive
+**********************************************************************/
 void Ant::move(Critter ***board, int rows, int columns)
 {
 	int move = rand() % 4 + 1;
@@ -101,6 +110,12 @@ void Ant::move(Critter ***board, int rows, int columns)
 	}
 }
 
+/*********************************************************************
+function breed()
+- takes the board and the numbers of rows and columns as parameters
+- checks if ant is old enough to breed. If so:
+- generates a random number and breeds in that direction
+**********************************************************************/
 void Ant::breed(Critter ***board, int rows, int columns)
 {
 	char ary[4] = {1, 2, 3, 4};
@@ -113,20 +128,15 @@ void Ant::breed(Critter ***board, int rows, int columns)
 		while (count < 4)	
 		{
 			//Use array to grab random direction
-		//	cout << "grabbing random number\n";
 			spot = rand() %4;
-		//	cout << spot << endl;
 			//Check if that direction has already been checked
 			if (ary[spot] != 0)
 			{
-			//	cout << "Checking array\n";
-			//	cout << ary[spot];
 				int test = ary[spot];
 				switch (test)
 				{	
 					case 1:
 					{
-				//	cout << "running case 1\n";
 					//if empty and not wall, breed north
 					if (yPos-1 >= 0)
 					{
@@ -154,7 +164,6 @@ void Ant::breed(Critter ***board, int rows, int columns)
 					}
 					case 2:	
 					{
-				//	cout << "running case 2\n";
 					//if empty and not wall, breed East
 					if (xPos+1 < columns)
 					{
@@ -182,7 +191,6 @@ void Ant::breed(Critter ***board, int rows, int columns)
 					}
 					case 3:
 					{
-				//	cout << "running case 3\n";
 					//if empty and not wall, breed South
 					if (yPos+1 < rows)
 					{
@@ -211,7 +219,6 @@ void Ant::breed(Critter ***board, int rows, int columns)
 
 					case 4:
 					{
-				//	cout << "running case 4\n";
 					//if empty and not wall, breed West
 					if (xPos-1 >= 0)
 					{
@@ -244,6 +251,7 @@ void Ant::breed(Critter ***board, int rows, int columns)
 
 }
 
+//ant destructor
 Ant::~Ant()
 {}
 
