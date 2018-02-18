@@ -381,9 +381,16 @@ void Doodlebug::starve(Critter ***board)
 	}
 }
 
+//reset which bugs have moved.
+void Doodlebug::setMoved()
+{
+	moved = 0;
+}
+
 //destructor
 Doodlebug::~Doodlebug()
 {}
+
 
 
 
