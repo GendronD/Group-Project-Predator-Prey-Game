@@ -164,6 +164,15 @@ void Board::simulation(int s)
                     if(board[rw][cl]->getSymbol() == 'X')
                     {
                         board[rw][cl]->move(board, rows, cols);
+                    }
+                }
+            }
+            for (int rw = 0; rw < rows; rw++)
+            {
+                for (int cl = 0; cl < cols; cl++)
+                {
+                    if(board[rw][cl]->getSymbol() == 'X')
+                    {
                         board[rw][cl]->breed(board, rows, cols);
                         board[rw][cl]->starve(board);
                     }
@@ -178,6 +187,15 @@ void Board::simulation(int s)
                     if(board[rw][cl]->getSymbol() == 'O')
                     {
                         board[rw][cl]->move(board, rows, cols);
+                    }
+                }
+            }
+            for (int rw = 0; rw < rows; rw++)
+            {
+                for (int cl = 0; cl < cols; cl++)
+                {
+                    if(board[rw][cl]->getSymbol() == 'O')
+                    {
                         board[rw][cl]->breed(board, rows, cols);
                     }
                 }
