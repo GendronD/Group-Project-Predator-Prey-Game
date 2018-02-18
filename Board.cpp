@@ -155,7 +155,6 @@ void Board::simulation(int s)
     {
         for (int i = 0; i < steps; i++)
         {
-            std::cout << "Test Doodelbugs" << std::endl;
             //loop through for doodlebugs
             for (int rw = 0; rw < rows; rw++)
             {
@@ -178,7 +177,6 @@ void Board::simulation(int s)
                     }
                 }
             }
-            std::cout << "Test ants" << std::endl;
             //loop through for ants
             for (int rw = 0; rw < rows; rw++)
             {
