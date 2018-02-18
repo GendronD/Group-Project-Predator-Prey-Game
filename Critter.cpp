@@ -38,5 +38,11 @@ void Critter::starve(Critter***)
 
 }
 
+//reset which bugs have moved
+void Critter::setMoved()
+{
+	moved = 0;
+}
+
 Critter::~Critter()
 {}
