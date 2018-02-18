@@ -29,7 +29,11 @@ int main ()
     int cols = 0;
     int ants = 0;
     int dbugs = 0;
-    
+    int tempDoodles = 0;
+    int tempAnts = 0;
+    int exitAnts = 0;
+    int exitDoodles = 0;
+
     //create a pointer to a Board object
     Board *gameboard;
 
@@ -58,9 +62,39 @@ int main ()
         case 2:  //make a custom gameboard
             rows = promptRows();        //Prompt user for number of rows
             cols = promptCols();        //Prompt user for number of columns
-            ants = promptAnts();        //Prompt user for number of ants (controlled by rows/cols)
-            dbugs = promptDoodles();     //Prompt user for number of doodlebugs (controlled by rows/cols)
+
+            do
+            {
+                tempAnts = promptAnts();
+                if (tempAnts <=((rows*cols)/2))
+                {
+                    ants = tempAnts;
+                    exitAnts = 1;
+                }
+                else
+                {
+                    std::cout << "Too many ants chosen, please choose less than " << ((rows*cols)/2) << " for this custom board" << std::endl;
+                    exitAnts = 0;
+                }
+            }while(exitAnts == 0);
+
+            do
+            {
+                tempDoodles = promptDoodles();
+                if (tempDoodles <= ((rows*cols)/4))
+                {
+                    dbugs = tempDoodles;
+                    exitDoodles = 1;
+                }
+                else
+                {
+                    std::cout << "Too many doodles chosen, please choose less than " << (((rows*cols)/4)) << " for this custom board" << std::endl;
+                    exitDoodles = 0;
+                }
+            }while(exitDoodles == 0);
+
             steps = promptSteps();       //Prompt user for number of steps
+            
             //constructor with parameters for gameboard
             gameboard = new Board(rows, cols, ants, dbugs);
 
@@ -79,7 +113,7 @@ int main ()
 
         default:    cout << "That's not a menu option. Please try again!\n" << endl;
             //start over by recursively calling main
-            //main();
+            main();
     }
 
     return 0;
