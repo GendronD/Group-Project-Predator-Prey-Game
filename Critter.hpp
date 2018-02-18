@@ -20,6 +20,7 @@ protected:
     int xPos;
     int yPos;
     char symbol;
+    int moved;
 public:
     Critter();
     virtual void move(Critter***, int, int);
