@@ -23,12 +23,12 @@ private:
     int ants, dbugs;
     Critter ***board;
 public:
-    Board();  //default
-    Board(int, int, int, int);  //overloard
+    Board();  //default constructor
+    Board(int, int, int, int);  //overloarded constructor
     ~Board();  //destructor
-    void printBoard();
-    void simulation(int);
-		
+	
+    void printBoard();	//display the current board
+    void simulation(int);	//run the simulation		
 };
 
 #endif
