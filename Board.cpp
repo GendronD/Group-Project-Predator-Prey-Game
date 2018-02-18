@@ -200,6 +200,13 @@ void Board::simulation(int s)
                     }
                 }
             }
+            for (int rw = 0; rw < rows; rw++)
+            {
+                for (int cl = 0; cl < cols; cl++)
+                {
+                   board[rw][cl]->setMoved();
+                }
+            }
             //display the updated board
             printBoard();
         }
