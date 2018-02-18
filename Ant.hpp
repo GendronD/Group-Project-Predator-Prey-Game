@@ -15,7 +15,7 @@ class Ant: public Critter
 {
 	public:
 		//constructor with params for row, column, and whether alive or not
-		Ant(int, int, int);
+		Ant(int, int, int, int);
 		
 		//function to move ants on the board
 		void move(Critter***, int, int);

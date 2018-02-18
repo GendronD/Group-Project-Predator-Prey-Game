@@ -17,7 +17,7 @@ class Doodlebug: public Critter
 		int daysStarving;
 	public:
 		//constructor with parameters
-		Doodlebug(int, int, int, int);
+		Doodlebug(int, int, int, int, int);
 		
 		//move the doodlebugs
 		void move(Critter***, int, int);

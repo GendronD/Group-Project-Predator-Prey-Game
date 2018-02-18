@@ -79,7 +79,7 @@ int main ()
 
         default:    cout << "That's not a menu option. Please try again!\n" << endl;
             //start over by recursively calling main
-            main();
+            //main();
     }
 
     return 0;

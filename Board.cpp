@@ -37,7 +37,7 @@ Board::Board()
     {
         int randRowA = rand() % rows;
         int randColA = rand() % cols;
-        board[randRowA][randColA] = new Ant(randRowA, randColA, 0);
+        board[randRowA][randColA] = new Ant(randRowA, randColA, 0, 0);
     }
 
     //Place doodlebugs randomly on board
@@ -45,7 +45,7 @@ Board::Board()
     {
         int randRowD = rand() % rows;
         int randColD = rand() % cols;
-        board[randRowD][randColD] = new Doodlebug(randRowD, randColD, 0, 0);
+        board[randRowD][randColD] = new Doodlebug(randRowD, randColD, 0, 0, 0);
     }
 }
 
@@ -77,7 +77,7 @@ Board::Board(int r, int c, int a, int d)
     {
         int randRowA = rand() % rows;
         int randColA = rand() % cols;
-        board[randRowA][randColA] = new Ant(randRowA, randColA, 0);
+        board[randRowA][randColA] = new Ant(randRowA, randColA, 0, 0);
     }
 
     //Place doodlebugs randomly on board
@@ -85,7 +85,7 @@ Board::Board(int r, int c, int a, int d)
     {
         int randRowD = rand() % rows;
         int randColD = rand() % cols;
-        board[randRowD][randColD] = new Doodlebug(randRowD, randColD, 0, 0);
+        board[randRowD][randColD] = new Doodlebug(randRowD, randColD, 0, 0, 0);
     }
 }
 

@@ -10,13 +10,13 @@
 #include "Critter.hpp"
 
 //constructor for ant objects, with params for row, column, and alive status
-Ant::Ant(int row, int col, int alive)
+Ant::Ant(int row, int col, int alive, int move)
 {
 	xPos = row;
 	yPos = col;
 	symbol = 'O';
 	daysAlive = alive;
-	moved = 0;
+	moved = move;
 }
 
 
@@ -39,7 +39,7 @@ void Ant::move(Critter ***board, int rows, int columns)
 			if(board[xPos-1][yPos]->getSymbol() ==' ')
 			{
 				delete board[xPos-1][yPos];
-				board[xPos-1][yPos] = new Ant(xPos-1, yPos, ++daysAlive);
+				board[xPos-1][yPos] = new Ant(xPos-1, yPos, ++daysAlive, 1);
 				delete board[xPos][yPos];
 				board[xPos][yPos] = new Critter();
 			}	
@@ -52,7 +52,6 @@ void Ant::move(Critter ***board, int rows, int columns)
 		{
 			daysAlive++;
 		}
-		moved = 1;
 		break;
 	
 		case 2:		//If space is empty and not wall, Move West	
@@ -61,7 +60,7 @@ void Ant::move(Critter ***board, int rows, int columns)
 			if (board[xPos][yPos-1]->getSymbol() ==' ')
 			{
 				delete board[xPos][yPos-1];
-				board[xPos][yPos-1] = new Ant(xPos, yPos-1, ++daysAlive);
+				board[xPos][yPos-1] = new Ant(xPos, yPos-1, ++daysAlive, 1);
 				delete board[xPos][yPos];
 				board[xPos][yPos] = new Critter();
 			}
@@ -74,7 +73,6 @@ void Ant::move(Critter ***board, int rows, int columns)
 		{
 			daysAlive++;
 		}
-		moved = 1;
 		break;
 
 		case 3:		//If space is empty and not wall, Move South	
@@ -83,7 +81,7 @@ void Ant::move(Critter ***board, int rows, int columns)
 			if (board[xPos+1][yPos]->getSymbol() ==' ')
 			{	
 				delete board[xPos+1][yPos];
-				board[xPos+1][yPos] = new Ant(xPos+1,yPos, ++daysAlive);
+				board[xPos+1][yPos] = new Ant(xPos+1,yPos, ++daysAlive, 1);
 				delete board[xPos][yPos];
 				board[xPos][yPos] = new Critter();
 			}
@@ -96,7 +94,6 @@ void Ant::move(Critter ***board, int rows, int columns)
 		{
 			daysAlive++;
 		}
-		moved = 1;
 		break;
 
 		case 4:		//if space is empty and not wall, Move East	
@@ -105,7 +102,7 @@ void Ant::move(Critter ***board, int rows, int columns)
 			if(board[xPos][yPos+1]->getSymbol() ==' ')
 			{
 				delete board[xPos][yPos+1];
-				board[xPos][yPos+1] = new Ant(xPos, yPos+1, ++daysAlive);
+				board[xPos][yPos+1] = new Ant(xPos, yPos+1, ++daysAlive, 1);
 				delete board[xPos][yPos];
 				board[xPos][yPos] = new Critter();
 			}
@@ -118,7 +115,6 @@ void Ant::move(Critter ***board, int rows, int columns)
 		{
 			daysAlive++;
 		}
-		moved = 1;
 		break;
 	}
 }
@@ -156,7 +152,7 @@ void Ant::breed(Critter ***board, int rows, int columns)
 						if (board[xPos-1][yPos]->getSymbol() == ' ')
 						{
 							delete board[xPos-1][yPos];
-							board[xPos-1][yPos] = new Ant(xPos-1, yPos, 0);
+							board[xPos-1][yPos] = new Ant(xPos-1, yPos, 0, 0);
 							count = 4;
 							daysAlive = 0;	
 						}
@@ -184,7 +180,7 @@ void Ant::breed(Critter ***board, int rows, int columns)
 						if (board[xPos][yPos+1]->getSymbol() == ' ')
 						{
 							delete board[xPos][yPos+1];
-							board[xPos][yPos+1] = new Ant(xPos, yPos+1, 0);
+							board[xPos][yPos+1] = new Ant(xPos, yPos+1, 0, 0);
 							count = 4;
 							daysAlive = 0;
 						}
@@ -212,7 +208,7 @@ void Ant::breed(Critter ***board, int rows, int columns)
 						if(board[xPos+1][yPos]->getSymbol() == ' ')
 						{
 							delete board[xPos+1][yPos];
-							board[xPos+1][yPos] = new Ant(xPos+1, yPos, 0);
+							board[xPos+1][yPos] = new Ant(xPos+1, yPos, 0, 0);
 							count = 4;
 							daysAlive = 0;
 						}
@@ -241,7 +237,7 @@ void Ant::breed(Critter ***board, int rows, int columns)
 						if (board[xPos][yPos-1]->getSymbol() == ' ')
 						{
 							delete board[xPos][yPos-1];
-							board[xPos][yPos-1] = new Ant(xPos, yPos-1, 0);
+							board[xPos][yPos-1] = new Ant(xPos, yPos-1, 0, 0);
 							count = 4;
 							daysAlive = 0;
 						}
