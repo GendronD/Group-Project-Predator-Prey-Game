@@ -6,11 +6,16 @@
  * Description: This is the implementation file for our promptUser functions,
  * which are used to establish the parameters of the game (rows, columns,
  * number of bugs, steps in gameplay). It also performs input validation.
- **********************************************************************/
+*********************************************************************/
 
 #include "promptUser.hpp"
 
-int inputValidation()	//Input validation to return only integers
+/*********************************************************************
+function inputValidation()
+- checks user input
+- returns only integers
+*********************************************************************/
+int inputValidation()	
 {
     int choice = 0;
     int exitCount = 0;
@@ -34,7 +39,6 @@ int inputValidation()	//Input validation to return only integers
 
             char symEntry[] = {'`', '-','~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')',
                                '{', '}', '[', ']', '"', '<', '>', ',', '.', '?', '/', ' '};
-            //removed: '\', '|', ';', ':', ''',
 
             //reads in string
             getline(std::cin, str);
@@ -94,7 +98,13 @@ int inputValidation()	//Input validation to return only integers
     return choice;
 }
 
-int promptRows()        //Prompt user for number of rows using input validation
+/*********************************************************************
+function promptRows()
+- prompts user for number of rows for gameboard
+- checks user input using input validation
+- returns only integers
+*********************************************************************/
+int promptRows()        
 {
 	int rows = 0;
 	int exitCount = 0;
@@ -194,8 +204,13 @@ int promptRows()        //Prompt user for number of rows using input validation
 
 	return rows;
 }
-
-int promptCols()        //Prompt user for number of columns using input validation
+/*********************************************************************
+function promptCols()
+- prompts user for number of columns for gameboard
+- checks user input using input validation
+- returns only integers
+*********************************************************************/
+int promptCols()    
 {
 	int cols = 0;
 	int exitCount = 0;
@@ -296,7 +311,13 @@ int promptCols()        //Prompt user for number of columns using input validati
 	return cols;
 }
 
-int promptAnts()        //Prompt user for number of ants using input validation
+/*********************************************************************
+function promptAnts()
+- prompts user for number of ants for gameboard
+- checks user input using input validation
+- returns only integers
+*********************************************************************/
+int promptAnts()        
 {
 	int ants = 0;
 	int exitCount = 0;
@@ -396,7 +417,14 @@ int promptAnts()        //Prompt user for number of ants using input validation
 
 	return ants;
 }
-int promptDoodles()     //Prompt user for number of doodlebugs using input validation
+
+/*********************************************************************
+function promptDoodles()
+- prompts user for number of doodlebugs for gameboard
+- checks user input using input validation
+- returns only integers
+*********************************************************************/
+int promptDoodles()    
 {
 	int doodlebugs = 0;
 	int exitCount = 0;
@@ -496,7 +524,14 @@ int promptDoodles()     //Prompt user for number of doodlebugs using input valid
 
 	return doodlebugs;
 }
-int promptSteps()       //Prompt user for number of steps using input validation
+
+/*********************************************************************
+function promptSteps()
+- prompts user for number of steps for the game
+- checks user input using input validation
+- returns only integers
+*********************************************************************/
+int promptSteps()       
 {
 	int steps = 0;
 	int exitCount = 0;
