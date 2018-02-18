@@ -51,6 +51,8 @@ int main ()
         case 1:  //make a default gameboard;
             gameboard = new Board;
             steps = promptSteps();
+            //runs simulation
+            gameboard->simulation(steps);
             break;
 
         case 2:  //make a custom gameboard
