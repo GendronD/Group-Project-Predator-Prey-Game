@@ -18,9 +18,18 @@ using std::endl;
 #include <time.h>
 #include <stdlib.h>
 
+void start();
+
 int main ()
 {
-    //random seed
+    start();
+    
+    return 0;
+}
+
+void start()
+{
+        //random seed
     srand(time(NULL));
 
     int choice = 0;
@@ -116,9 +125,7 @@ int main ()
             break;
 
         default:    cout << "That's not a menu option. Please try again!\n" << endl;
-            //start over by recursively calling main
-            main();
+            //start over by recursively calling start
+            start();
     }
-
-    return 0;
-}
+}    
