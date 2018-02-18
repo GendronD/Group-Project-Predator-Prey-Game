@@ -26,9 +26,6 @@ class Doodlebug: public Critter
 		//starve the doodlebugs
 		void starve(Critter***);
 		
-		//tracking whether bug has moved already
-		void setMoved();
-		
 		//destructor
 		~Doodlebug();
 };
