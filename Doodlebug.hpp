@@ -13,12 +13,21 @@
 class Doodlebug: public Critter
 {
 	private:
+		//specific to doodlebugs
 		int daysStarving;
 	public:
+		//constructor with parameters
 		Doodlebug(int, int, int, int);
+		
+		//move the doodlebugs
 		void move(Critter***, int, int);
+		//breed the doodlebugs
 		void breed(Critter***, int, int);
+		//starve the doodlebugs
 		void starve(Critter***);
+		
+		//destructor
+		~Doodlebug();
 };
 
 #endif
