@@ -23,9 +23,8 @@ int main ()
     //random seed
     srand(time(NULL));
 
-    int choice = 0;
-    int endGame = 1;
-    Board *gameboard;
+    int choice = 0;         //menu choice
+    Board *gameboard;       //game board object
     int steps = 0;
 
     //extra credit message
@@ -51,8 +50,8 @@ int main ()
         case 2:     {//make a custom gameboard
             int rows = promptRows();        //Prompt user for number of rows
             int cols = promptCols();        //Prompt user for number of columns
-            int ants = promptAnts();        //Prompt user for number of ants (controlled by rows/cols)
-            int dbugs = promptDoodles();     //Prompt user for number of doodlebugs (controlled by rows/cols)
+            int ants = promptAnts();        //Prompt user for number of ants
+            int dbugs = promptDoodles();     //Prompt user for number of doodlebugs
             steps = promptSteps();       //Prompt user for number of steps
             //constructor with parameters for gameboard
             gameboard = new Board(rows, cols, ants, dbugs);
@@ -64,10 +63,10 @@ int main ()
     }
 
     cout << "Initial gameboard. Doodlebugs, start your engines." << endl;
-    gameboard->printBoard();
+    gameboard->printBoard();    //prints gameboard
 
     //runs simulation
-    gameboard->simulation(steps);
+    gameboard->simulation(steps);   //runs predator prey simulation
 
     std::cout<< "game ended!" << std::endl;
 
