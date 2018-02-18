@@ -24,12 +24,14 @@ int main ()
     srand(time(NULL));
 
     int choice = 0;
-    Board *gameboard;
     int steps = 0;
     int rows = 0;
     int cols = 0;
     int ants = 0;
     int dbugs = 0;
+    
+    //create a pointer to a Board object
+    Board *gameboard;
 
     //extra credit message
     cout << "Extra credit is implemented on this project\n" << endl;
