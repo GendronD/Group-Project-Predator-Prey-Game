@@ -37,7 +37,9 @@ void Ant::move(Critter ***board, int rows, int columns)
 		{
 			if(board[xPos-1][yPos]->getSymbol() ==' ')
 			{
+				delete board[xPos-1][yPos];
 				board[xPos-1][yPos] = new Ant(xPos-1, yPos, ++daysAlive);
+				delete board[xPos][yPos];
 				board[xPos][yPos] = new Critter();
 			}	
 			else
@@ -56,7 +58,9 @@ void Ant::move(Critter ***board, int rows, int columns)
 		{
 			if (board[xPos][yPos-1]->getSymbol() ==' ')
 			{
+				delete board[xPos][yPos-1];
 				board[xPos][yPos-1] = new Ant(xPos, yPos-1, ++daysAlive);
+				delete board[xPos][yPos];
 				board[xPos][yPos] = new Critter();
 			}
 			else
@@ -75,7 +79,9 @@ void Ant::move(Critter ***board, int rows, int columns)
 		{
 			if (board[xPos+1][yPos]->getSymbol() ==' ')
 			{	
+				delete board[xPos+1][yPos];
 				board[xPos+1][yPos] = new Ant(xPos+1,yPos, ++daysAlive);
+				delete board[xPos][yPos];
 				board[xPos][yPos] = new Critter();
 			}
 			else
@@ -94,7 +100,9 @@ void Ant::move(Critter ***board, int rows, int columns)
 		{
 			if(board[xPos][yPos+1]->getSymbol() ==' ')
 			{
+				delete board[xPos][yPos+1];
 				board[xPos][yPos+1] = new Ant(xPos, yPos+1, ++daysAlive);
+				delete board[xPos][yPos];
 				board[xPos][yPos] = new Critter();
 			}
 			else
@@ -142,6 +150,7 @@ void Ant::breed(Critter ***board, int rows, int columns)
 					{
 						if (board[xPos-1][yPos]->getSymbol() == ' ')
 						{
+							delete board[xPos-1][yPos];
 							board[xPos-1][yPos] = new Ant(xPos-1, yPos, 0);
 							count = 4;
 							daysAlive = 0;	
@@ -169,6 +178,7 @@ void Ant::breed(Critter ***board, int rows, int columns)
 					{
 						if (board[xPos][yPos+1]->getSymbol() == ' ')
 						{
+							delete board[xPos][yPos+1];
 							board[xPos][yPos+1] = new Ant(xPos, yPos+1, 0);
 							count = 4;
 							daysAlive = 0;
@@ -196,6 +206,7 @@ void Ant::breed(Critter ***board, int rows, int columns)
 					{
 						if(board[xPos+1][yPos]->getSymbol() == ' ')
 						{
+							delete board[xPos+1][yPos];
 							board[xPos+1][yPos] = new Ant(xPos+1, yPos, 0);
 							count = 4;
 							daysAlive = 0;
@@ -224,6 +235,7 @@ void Ant::breed(Critter ***board, int rows, int columns)
 					{
 						if (board[xPos][yPos-1]->getSymbol() == ' ')
 						{
+							delete board[xPos][yPos-1];
 							board[xPos][yPos-1] = new Ant(xPos, yPos-1, 0);
 							count = 4;
 							daysAlive = 0;
