@@ -7,7 +7,7 @@
  * contains the functions for our Board object.
  **********************************************************************/
 #include "Board.hpp"
-#include "promptUser.h"
+#include "promptUser.hpp"
 
 //default constructor
 Board::Board()
