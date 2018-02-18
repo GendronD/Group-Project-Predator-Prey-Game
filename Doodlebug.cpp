@@ -38,7 +38,9 @@ void Doodlebug::move(Critter ***board, int rows, int columns)
 				{
 					if (board[xPos-1][yPos]->getSymbol() == 'O')
 					{
+						delete board[xPos-1][yPos];
 						board[xPos-1][yPos] = new Doodlebug(xPos-1, yPos, ++daysAlive, 0);
+						delete board[xPos][yPos];
 						board[xPos][yPos] = new Critter();
 						count = 5;
 						break;
@@ -54,7 +56,9 @@ void Doodlebug::move(Critter ***board, int rows, int columns)
 				{
 					if (board[xPos+1][yPos]->getSymbol() == 'O')
 					{
+						delete board[xPos+1][yPos];
 						board[xPos+1][yPos] = new Doodlebug(xPos+1, yPos, ++daysAlive, 0);
+						delete board[xPos][yPos];
 						board[xPos][yPos] = new Critter();
 						count = 5;
 						break;
@@ -70,7 +74,9 @@ void Doodlebug::move(Critter ***board, int rows, int columns)
 				{
 					if (board[xPos][yPos-1]->getSymbol() == 'O')
 					{
+						delete board[xPos][yPos-1];
 						board[xPos][yPos-1] = new Doodlebug(xPos, yPos-1, ++daysAlive, 0);
+						delete board[xPos][yPos];
 						board[xPos][yPos] = new Critter();
 						count = 5;
 						break;
@@ -86,7 +92,9 @@ void Doodlebug::move(Critter ***board, int rows, int columns)
 				{
 					if (board[xPos][yPos+1]->getSymbol() == 'O')
 					{
+						delete board[xPos][yPos+1];
 						board[xPos][yPos+1] = new Doodlebug(xPos, yPos+1, ++daysAlive, 0);
+						delete board[xPos][yPos];
 						board[xPos][yPos] = new Critter();
 						count = 5;
 						break;
@@ -107,7 +115,9 @@ void Doodlebug::move(Critter ***board, int rows, int columns)
 					{
 						if(board[xPos-1][yPos]->getSymbol() ==' ')
 						{
+							delete board[xPos-1][yPos];
 							board[xPos-1][yPos] = new Doodlebug(xPos-1, yPos, ++daysAlive, ++daysStarving);
+							delete board[xPos][yPos];
 							board[xPos][yPos] = new Critter();
 						}	
 						else
@@ -129,7 +139,9 @@ void Doodlebug::move(Critter ***board, int rows, int columns)
 					{
 						if (board[xPos][yPos-1]->getSymbol() ==' ')
 						{
+							delete board[xPos][yPos-1];
 							board[xPos][yPos-1] = new Doodlebug(xPos,yPos-1, ++daysAlive, ++daysStarving);
+							delete board[xPos][yPos];
 							board[xPos][yPos] = new Critter();
 						}
 						else
@@ -151,7 +163,9 @@ void Doodlebug::move(Critter ***board, int rows, int columns)
 					{
 						if (board[xPos+1][yPos]->getSymbol() ==' ')
 						{	
+							delete board[xPos+1][yPos];
 							board[xPos+1][yPos] = new Doodlebug(xPos+1,yPos, ++daysAlive, ++daysStarving);
+							delete board[xPos][yPos];
 							board[xPos][yPos] = new Critter();
 						}
 						else
@@ -173,7 +187,9 @@ void Doodlebug::move(Critter ***board, int rows, int columns)
 					{
 						if(board[xPos][yPos+1]->getSymbol() ==' ')
 						{
+							delete board[xPos][yPos+1];
 							board[xPos][yPos+1] = new Doodlebug(xPos, yPos+1, ++daysAlive, ++daysStarving);
+							delete board[xPos][yPos];
 							board[xPos][yPos] = new Critter();
 						}
 						else
@@ -228,6 +244,7 @@ void Doodlebug::breed(Critter ***board, int rows, int columns)
 					{
 						if (board[xPos-1][yPos]->getSymbol() == ' ')
 						{
+							delete board[xPos-1][yPos];
 							board[xPos-1][yPos] = new Doodlebug(xPos-1, yPos, 0, 0);
 							count = 4;
 							daysAlive = 0;	
@@ -256,6 +273,7 @@ void Doodlebug::breed(Critter ***board, int rows, int columns)
 					{
 						if (board[xPos][yPos+1]->getSymbol() == ' ')
 						{
+							delete board[xPos][yPos+1];
 							board[xPos][yPos+1] = new Doodlebug(xPos, yPos+1, 0, 0);
 							count = 4;
 							daysAlive = 0;
@@ -284,6 +302,7 @@ void Doodlebug::breed(Critter ***board, int rows, int columns)
 					{
 						if(board[xPos+1][yPos]->getSymbol() == ' ')
 						{
+							delete board[xPos+1][yPos];
 							board[xPos+1][yPos] = new Doodlebug(xPos+1, yPos, 0, 0);
 							count = 4;
 							daysAlive = 0;
@@ -312,6 +331,7 @@ void Doodlebug::breed(Critter ***board, int rows, int columns)
 					{
 						if (board[xPos][yPos-1]->getSymbol() == ' ')
 						{
+							delete board[xPos][yPos-1];
 							board[xPos][yPos-1] = new Doodlebug(xPos, yPos-1, 0, 0);
 							count = 4;
 							daysAlive = 0;
@@ -347,6 +367,7 @@ void Doodlebug::starve(Critter ***board)
 {
 	if (daysStarving >= 3)
 	{
+		delete board[xPos][yPos];
 		board[xPos][yPos] = new Critter();
 	}
 }
