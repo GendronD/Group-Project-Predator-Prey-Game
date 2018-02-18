@@ -16,6 +16,7 @@ Ant::Ant(int row, int col, int alive)
 	yPos = col;
 	symbol = 'O';
 	daysAlive = alive;
+	moved = 0;
 }
 
 
@@ -51,6 +52,7 @@ void Ant::move(Critter ***board, int rows, int columns)
 		{
 			daysAlive++;
 		}
+		moved = 1;
 		break;
 	
 		case 2:		//If space is empty and not wall, Move West	
@@ -72,6 +74,7 @@ void Ant::move(Critter ***board, int rows, int columns)
 		{
 			daysAlive++;
 		}
+		moved = 1;
 		break;
 
 		case 3:		//If space is empty and not wall, Move South	
@@ -93,6 +96,7 @@ void Ant::move(Critter ***board, int rows, int columns)
 		{
 			daysAlive++;
 		}
+		moved = 1;
 		break;
 
 		case 4:		//if space is empty and not wall, Move East	
@@ -114,6 +118,7 @@ void Ant::move(Critter ***board, int rows, int columns)
 		{
 			daysAlive++;
 		}
+		moved = 1;
 		break;
 	}
 }
