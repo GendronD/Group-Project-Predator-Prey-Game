@@ -10,7 +10,7 @@
 
 #include "promptUser.hpp"
 
-int inputValidation()
+int inputValidation()	//Input validation to return only integers
 {
     int choice = 0;
     int exitCount = 0;
@@ -94,7 +94,7 @@ int inputValidation()
     return choice;
 }
 
-int promptRows()        //Prompt user for number of rows
+int promptRows()        //Prompt user for number of rows using input validation
 {
 	int rows = 0;
 	int exitCount = 0;
@@ -195,7 +195,7 @@ int promptRows()        //Prompt user for number of rows
 	return rows;
 }
 
-int promptCols()        //Prompt user for number of columns
+int promptCols()        //Prompt user for number of columns using input validation
 {
 	int cols = 0;
 	int exitCount = 0;
@@ -296,7 +296,7 @@ int promptCols()        //Prompt user for number of columns
 	return cols;
 }
 
-int promptAnts()        //Prompt user for number of ants (controlled by rows/cols)?
+int promptAnts()        //Prompt user for number of ants using input validation
 {
 	int ants = 0;
 	int exitCount = 0;
@@ -396,7 +396,7 @@ int promptAnts()        //Prompt user for number of ants (controlled by rows/col
 
 	return ants;
 }
-int promptDoodles()     //Prompt user for number of doodlebugs (controlled by rows/cols)
+int promptDoodles()     //Prompt user for number of doodlebugs using input validation
 {
 	int doodlebugs = 0;
 	int exitCount = 0;
@@ -496,7 +496,7 @@ int promptDoodles()     //Prompt user for number of doodlebugs (controlled by ro
 
 	return doodlebugs;
 }
-int promptSteps()       //Prompt user for number of steps
+int promptSteps()       //Prompt user for number of steps using input validation
 {
 	int steps = 0;
 	int exitCount = 0;
