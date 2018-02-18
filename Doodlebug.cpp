@@ -7,7 +7,7 @@
  * class. It contains the functions for Doodlebug objects.
  **********************************************************************/
 #include "Doodlebug.hpp"
-
+#include <iostream>
 //constructor take parameters for row, column, alive status, and starving status
 Doodlebug::Doodlebug(int row, int col, int alive, int starve)
 {
@@ -16,6 +16,7 @@ Doodlebug::Doodlebug(int row, int col, int alive, int starve)
 	symbol = 'X';
 	daysAlive = alive;
 	daysStarving = starve;
+	moved = 0;
 }
 
 /*********************************************************************
@@ -29,7 +30,7 @@ void Doodlebug::move(Critter ***board, int rows, int columns)
 {
 	int count = 0;
 	//Check if there is an ant next to bug, if so eat it
-	while (count < 5)
+	while (count < 5 && moved == 0)
 	{
 		switch (count)
 		{
@@ -43,6 +44,7 @@ void Doodlebug::move(Critter ***board, int rows, int columns)
 						delete board[xPos][yPos];
 						board[xPos][yPos] = new Critter();
 						count = 5;
+						moved = 1;
 						break;
 					}
 					count++;
@@ -61,6 +63,7 @@ void Doodlebug::move(Critter ***board, int rows, int columns)
 						delete board[xPos][yPos];
 						board[xPos][yPos] = new Critter();
 						count = 5;
+						moved = 1;
 						break;
 					}
 					count++;
@@ -79,6 +82,7 @@ void Doodlebug::move(Critter ***board, int rows, int columns)
 						delete board[xPos][yPos];
 						board[xPos][yPos] = new Critter();
 						count = 5;
+						moved = 1;
 						break;
 					}
 					count++;
@@ -97,6 +101,7 @@ void Doodlebug::move(Critter ***board, int rows, int columns)
 						delete board[xPos][yPos];
 						board[xPos][yPos] = new Critter();
 						count = 5;
+						moved = 1;
 						break;
 					}
 					count++;
@@ -132,6 +137,7 @@ void Doodlebug::move(Critter ***board, int rows, int columns)
 						daysStarving++;
 					}
 					count++;
+					moved = 1;
 					break;
 		
 					case 2://If space is empty and not wall, Move West	
@@ -156,6 +162,7 @@ void Doodlebug::move(Critter ***board, int rows, int columns)
 						daysStarving++;
 					}
 					count++;
+					moved = 1;
 					break;
 		
 					case 3://If space is empty and not wall, Move South	
@@ -180,6 +187,7 @@ void Doodlebug::move(Critter ***board, int rows, int columns)
 						daysStarving++;
 					}
 					count++;
+					moved = 1;
 					break;
 		
 					case 4://if space is empty and not wall, Move East	
@@ -204,6 +212,7 @@ void Doodlebug::move(Critter ***board, int rows, int columns)
 						daysStarving++;
 					}
 					count++;
+					moved = 1;
 					break;
 			}
 		}
@@ -222,7 +231,7 @@ void Doodlebug::breed(Critter ***board, int rows, int columns)
 	char ary[4] = {1, 2, 3, 4};
 	int count = 0;
 	int spot;
-
+	std::cout << "Days alive: "<< daysAlive << std::endl;
 	//check if doodlebug has lived long enough
 	if (daysAlive >= 8)
 	{
@@ -365,7 +374,7 @@ function starve()
 **********************************************************************/
 void Doodlebug::starve(Critter ***board)
 {
-	if (daysStarving >= 3)
+	if (daysStarving == 3)
 	{
 		delete board[xPos][yPos];
 		board[xPos][yPos] = new Critter();
@@ -375,5 +384,6 @@ void Doodlebug::starve(Critter ***board)
 //destructor
 Doodlebug::~Doodlebug()
 {}
+
 
 
