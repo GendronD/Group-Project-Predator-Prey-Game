@@ -21,7 +21,7 @@
 
 
 int inputValidation();   //checks user input - must be an integer within the specs
-
+int mainMenu();          //menu for initial case statements
 int promptRows();        //Prompt user for number of rows
 int promptCols();        //Prompt user for number of columns
 int promptAnts();        //Prompt user for number of ants (controlled by rows/cols)
