@@ -55,6 +55,9 @@ int main ()
         case 1:  //make a default gameboard;
             gameboard = new Board;
             steps = promptSteps();
+            //print initial board
+            cout << "\nInitial gameboard. Doodlebugs, start your engines." << endl;
+            gameboard->printBoard();
             //runs simulation
             gameboard->simulation(steps);
             break;
@@ -97,14 +100,15 @@ int main ()
             
             //constructor with parameters for gameboard
             gameboard = new Board(rows, cols, ants, dbugs);
-
-            cout << "Initial gameboard. Doodlebugs, start your engines." << endl;
+            
+            //print intitial board
+            cout << "\nInitial gameboard. Doodlebugs, start your engines." << endl;
             gameboard->printBoard();
 
             //runs simulation
             gameboard->simulation(steps);
 
-            std::cout<< "game ended!" << std::endl;
+            std::cout<< "/ngame ended!" << std::endl;
             break;
 
         case 3 : //quit game
