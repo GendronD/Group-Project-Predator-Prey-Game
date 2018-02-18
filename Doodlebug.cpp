@@ -8,6 +8,7 @@
  **********************************************************************/
 #include "Doodlebug.hpp"
 
+//constructor take parameters for row, column, alive status, and starving status
 Doodlebug::Doodlebug(int row, int col, int alive, int starve)
 {
 	xPos = row;
@@ -17,6 +18,13 @@ Doodlebug::Doodlebug(int row, int col, int alive, int starve)
 	daysStarving = starve;
 }
 
+/*********************************************************************
+function move()
+- checks for adjoining ants and eats them if they exist
+- generates a random number and moves the doodlebug in that direction,
+if it's possible to move
+- increments daysAlive and daysStarving
+**********************************************************************/
 void Doodlebug::move(Critter ***board, int rows, int columns)
 {
 	int count = 0;
@@ -186,6 +194,13 @@ void Doodlebug::move(Critter ***board, int rows, int columns)
 	}
 }
 
+/*********************************************************************
+function breed()
+- checks if doodlebug is old enough to breed. If so:
+- generates a random number and check if that direction is free. If so,
+doodlebug breeds in the random direction. If not, doodlebug tries to
+breed in a new direction
+**********************************************************************/
 void Doodlebug::breed(Critter ***board, int rows, int columns)
 {
 	char ary[4] = {1, 2, 3, 4};
@@ -323,7 +338,11 @@ void Doodlebug::breed(Critter ***board, int rows, int columns)
 	}
 
 }
-
+/*********************************************************************
+function starve()
+- checks if doodlebug hasn't eaten in 3 days
+- if so, starves the doodlebug
+**********************************************************************/
 void Doodlebug::starve(Critter ***board)
 {
 	if (daysStarving >= 3)
@@ -331,5 +350,9 @@ void Doodlebug::starve(Critter ***board)
 		board[xPos][yPos] = new Critter();
 	}
 }
+
+//destructor
+Doodlebug::~Doodlebug()
+{}
 
 
